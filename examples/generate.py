@@ -4,7 +4,7 @@ import os
 import shutil
 import subprocess
 
-BASE = "../src/examples"
+DST = "src/examples"
 
 def save_output(output_path, cmd):
     term_transcript_cmd = f'term-transcript exec "{cmd}"'
@@ -27,7 +27,7 @@ def save_output(output_path, cmd):
 
 
 def static(template_dir, name, command):
-    dest_dir = os.path.join(BASE, name)
+    dest_dir = os.path.join(DST, name)
     if os.path.exists(dest_dir):
         shutil.rmtree(dest_dir)
     shutil.copytree(template_dir, dest_dir)

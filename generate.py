@@ -6,15 +6,17 @@ import tempfile
 import subprocess
 from contextlib import contextmanager
 
-EXAMPLES_DIR = "../src/examples"
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+SRC = os.path.join(SCRIPT_DIR, "examples")
+DST = os.path.join(SCRIPT_DIR, "src/examples")
 
 
 @contextmanager
 def temp_example_dir(source_dir):
     with tempfile.TemporaryDirectory() as temp_dir:
-        dest_dir = os.path.join(temp_dir, os.path.basename(source_dir))
-        shutil.copytree(source_dir, dest_dir)
+        dest_dir = os.path.join(temp_dir, source_dir)
+        shutil.copytree(os.path.join(SRC, source_dir), dest_dir)
         original_dir = os.getcwd()
         os.chdir(dest_dir)
         try:
@@ -24,8 +26,8 @@ def temp_example_dir(source_dir):
 
 
 def vhs(tape_name):
-    shutil.copy(os.path.join(SCRIPT_DIR, f"{tape_name}.tape"), ".")
-    shutil.copy(os.path.join(SCRIPT_DIR, "common.tape"), ".")
+    shutil.copy(os.path.join(SRC, f"{tape_name}.tape"), ".")
+    shutil.copy(os.path.join(SRC, "common.tape"), ".")
     subprocess.run(["vhs", f"./{tape_name}.tape"], check=True)
 
 
@@ -36,7 +38,7 @@ def capture(example_name, path, prefix=None):
         dest_filename = f"{example_name}_{prefix}_{filename}"
     else:
         dest_filename = f"{example_name}_{filename}"
-    dest_path = os.path.join(SCRIPT_DIR, EXAMPLES_DIR, dest_filename)
+    dest_path = os.path.join(DST, dest_filename)
     shutil.copy2(source_path, dest_path)
 
 
