@@ -21,7 +21,8 @@ Configures the project - that is, which files are included for editing.
 </tr>
 </table>
 
-Example:
+# Example
+
 ```ron
 (
     project (

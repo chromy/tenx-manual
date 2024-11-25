@@ -1,6 +1,7 @@
 # Dialect
 
-Settings related to the dialect we are using to communicate to models. For the moment, we have only one dialect, so this section is pretty simple.
+Settings related to the dialect we are using to communicate to models. For the
+moment, we have only one dialect, so this section is pretty simple.
 
 <table>
 <thead>
@@ -13,7 +14,8 @@ Settings related to the dialect we are using to communicate to models. For the m
 </tr>
 </table>
 
-Example:
+# Example
+
 ```ron
 (
     dialect: (

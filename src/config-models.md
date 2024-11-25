@@ -25,6 +25,9 @@ This section controls model selection and behavior.
 </tr>
 </table>
 
+
+# Builtin models
+
 Tenx auto-configures builtin models based on the presence of API keys in
 environment variables:
 
@@ -68,6 +71,9 @@ environment variables:
     </td>
 </tr>
 </table>
+
+
+# Custom models
 
 Models configurations come in two varieities - **claude**, which is specific to
 the Anthropic API, and **openai**, which can be used for any model compatible
@@ -134,6 +140,9 @@ The possible fields for **openai** models are:
     <td>Whether the model supports a separate system prompt</td>
 </tr>
 </table>
+
+
+# Example
 
 Example of configuring a custom model using Ollama:
 

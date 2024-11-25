@@ -22,13 +22,3 @@ allows you to enable functionality that is currently broken.
 </tr>
 </table>
 
-Example:
-```ron
-(
-    tags: (
-        smart: false,
-        replace: true,
-        udiff: false,
-    ),
-)
-```

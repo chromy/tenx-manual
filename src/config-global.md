@@ -18,7 +18,8 @@
 </tr>
 </table>
 
-Example:
+# Example
+
 ```ron
 (
     session_store_dir: "~/.local/share/tenx",

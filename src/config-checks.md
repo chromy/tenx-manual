@@ -66,7 +66,9 @@ Check configurations have the following fields:
 </tr>
 </table>
 
-Example of configuring a custom check:
+# Example
+
+Example of configuring a custom check.
 
 ```ron
 (
