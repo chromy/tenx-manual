@@ -111,7 +111,7 @@ Example:
 
 ### Models
 
-Controls model selection and behavior.
+This section controls model selection and behavior. 
 
 <table>
 <thead>
@@ -133,6 +133,50 @@ Controls model selection and behavior.
 <tr>
     <td><code>no_stream</code></td>
     <td>Disable streaming for all models</td>
+</tr>
+</table>
+
+Tenx auto-configures builtin models based on the presence of API keys in
+environment variables:
+
+<table>
+<thead>
+    <th>Environment Variable</th>
+    <th>Models Added</th>
+</thead>
+<tr>
+    <td><code>ANTHROPIC_API_KEY</code></td>
+    <td>
+        <code>sonnet</code> (claude-3-5-sonnet-latest)<br>
+        <code>haiku</code> (claude-3-5-haiku-latest)
+    </td>
+</tr>
+<tr>
+    <td><code>DEEPINFRA_API_KEY</code></td>
+    <td>
+        <code>qwen-coder</code> (Qwen/Qwen2.5-Coder-32B-Instruct)
+    </td>
+</tr>
+<tr>
+    <td><code>OPENAI_API_KEY</code></td>
+    <td>
+        <code>o1</code> (o1-preview)<br>
+        <code>o1-mini</code> (o1-mini)<br>
+        <code>gpt4o</code> (gpt-4o)<br>
+        <code>gpt4o-mini</code> (gpt-4o-mini)
+    </td>
+</tr>
+<tr>
+    <td><code>XAI_API_KEY</code></td>
+    <td>
+        <code>grok</code> (grok-beta)
+    </td>
+</tr>
+<tr>
+    <td><code>GOOGLEAI_API_KEY</code></td>
+    <td>
+        <code>gemini</code> (gemini-exp-1114)
+    </td>
 </tr>
 </table>
 
