@@ -343,23 +343,68 @@ Example:
 )
 ```
 
-### Tags Configuration
 
-Controls how code modifications are handled:
+### Dialect
 
-- `smart`: Enable smart tag handling
-- `replace`: Enable replacement tags
-- `udiff`: Enable unified diff format
+Settings related to the dialect we are using to communicate to models. For the moment, we have only one dialect, so this section is pretty simple.
 
-### Operations Configuration
+<table>
+<thead>
+    <th>Field</th>
+    <th>Description</th>
+</thead>
+<tr>
+    <td><code>edit</code></td>
+    <td>Allow the model to request to edit files in the project map</td>
+</tr>
+</table>
 
-Controls available operations:
+Example:
+```ron
+(
+    dialect: (
+        edit: true,
+    ),
+)
+```
 
-- `edit`: Enable file editing operations
 
-Each configuration section can be specified independently in either the global
-or project configuration files. Project configurations take precedence over
-global ones.
+
+### Tags
+
+Controls the **tags** dialect. This is a *DEVELOPER ONLY* section for now, and
+allows you to enable functionality that is currently broken. 
+
+<table>
+<thead>
+    <th>Field</th>
+    <th>Description</th>
+</thead>
+<tr>
+    <td><code>smart</code></td>
+    <td>Enable smart tag handling (experimental)</td>
+</tr>
+<tr>
+    <td><code>replace</code></td>
+    <td>Enable replacement tags</td>
+</tr>
+<tr>
+    <td><code>udiff</code></td>
+    <td>Enable unified diff format (experimental)</td>
+</tr>
+</table>
+
+Example:
+```ron
+(
+    tags: (
+        smart: false,
+        replace: true,
+        udiff: false,
+    ),
+)
+```
+
 
 
 [^xdg]: This may actually be different based on your [XDG
