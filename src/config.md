@@ -299,13 +299,49 @@ Example of configuring a custom check:
 )
 ```
 
-### Context 
+### Context
 
-Controls what context is provided to the AI:
+Controls what context is provided to the AI model.
 
-- `ruskel`: List of Rust files to parse for skeleton context
-- `path`: List of files to include as full context
-- `project_map`: Whether to include the project file structure
+<table>
+<thead>
+    <th>Field</th>
+    <th>Description</th>
+</thead>
+<tr>
+    <td><code>ruskel</code></td>
+    <td>List of Rust files to parse for skeleton context using ruskel</td>
+</tr>
+<tr>
+    <td><code>path</code></td>
+    <td>List of files to include as full context</td>
+</tr>
+<tr>
+    <td><code>project_map</code></td>
+    <td>Whether to include the project file structure</td>
+</tr>
+<tr>
+    <td><code>text</code></td>
+    <td>List of named text snippets to include as context</td>
+</tr>
+</table>
+
+Example:
+```ron
+(
+    context: (
+        ruskel: ["tokio", "libtenx"],
+        path: ["README.md", "Cargo.toml"],
+        project_map: true,
+        text: [
+            (
+                name: "style_guide",
+                content: "Code style guidelines...",
+            ),
+        ],
+    ),
+)
+```
 
 ### Tags Configuration
 
