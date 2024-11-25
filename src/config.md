@@ -61,40 +61,155 @@ Example:
 ```
 
 
-### Project 
+### Project
 
-Controls which files are included in the project context:
+Configures the project - that is, which files are included for editing.
 
-- `include`: Either `Git` to use git-tracked files, or `Glob([patterns])` for custom patterns
-- `exclude`: List of glob patterns for files to exclude
-- `root`: Either `Discover` for automatic detection or `Path("path")` for explicit path
+<table>
+<thead>
+    <th>Field</th>
+    <th>Description</th>
+</thead>
+<tr>
+    <td><code>include</code></td>
+    <td>Either <code>git</code> to use git-tracked files, or <code>glob([patterns])</code> for custom patterns</td>
+</tr>
+<tr>
+    <td><code>exclude</code></td>
+    <td>List of glob patterns for files to exclude</td>
+</tr>
+<tr>
+    <td><code>root</code></td>
+    <td>Either <code>discover</code> for automatic detection or <code>path("path")</code> for explicit path</td>
+</tr>
+</table>
 
-
-### Models 
-
-Controls model selection and behavior:
-
-- `custom`: A map of custom model configurations. Each model has:
-  - `api_model`: The actual model name to use with the API
-  - `key_env`: Environment variable containing the API key
-  - `api_base`: Optional API endpoint URL
-  - `can_stream`: Whether the model supports streaming
-  - `no_system_prompt`: Whether to skip system prompts
-- `default`: The default model to use
-- `no_stream`: Globally disable streaming
-
-Example of a custom model:
+Example:
 ```ron
 (
-    custom: {
-        "gpt-4-turbo": (
-            api_model: "gpt-4-1106-preview",
-            key_env: "OPENAI_API_KEY",
-            can_stream: true,
-        ),
-    },
+    project (
+        include: git,
+        exclude: ["*.md", "target/"],
+        root: discover,
+    )
 )
 ```
+
+
+### Models
+
+Controls model selection and behavior.
+
+<table>
+<thead>
+    <th>Field</th>
+    <th>Description</th>
+</thead>
+<tr>
+    <td><code>builtin</code></td>
+    <td>Built-in model configurations</td>
+</tr>
+<tr>
+    <td><code>custom</code></td>
+    <td>Custom model configurations. Entries with the same name as a builtin will override the builtin</td>
+</tr>
+<tr>
+    <td><code>default</code></td>
+    <td>The default model name</td>
+</tr>
+<tr>
+    <td><code>no_stream</code></td>
+    <td>Disable streaming for all models</td>
+</tr>
+</table>
+
+Models configurations come in two varieities - **claude**, which is specific to
+the Anthropic API, and **openai**, which can be used for any model compatible
+with the OpenAI API.
+
+The possible fields for **claude** models are:
+
+<table>
+<thead>
+    <th>Field</th>
+    <th>Description</th>
+</thead>
+<tr>
+    <td><code>name</code></td>
+    <td>The name used to refer to this model</td>
+</tr>
+<tr>
+    <td><code>api_model</code></td>
+    <td>The API model identifier</td>
+</tr>
+<tr>
+    <td><code>key</code></td>
+    <td>The API key</td>
+</tr>
+<tr>
+    <td><code>key_env</code></td>
+    <td>Environment variable to load the API key from if key is empty</td>
+</tr>
+</table>
+
+The possible fields for **openai** models are:
+
+<table>
+<thead>
+    <th>Field</th>
+    <th>Description</th>
+</thead>
+<tr>
+    <td><code>name</code></td>
+    <td>The name of the model</td>
+</tr>
+<tr>
+    <td><code>api_model</code></td>
+    <td>The API model identifier</td>
+</tr>
+<tr>
+    <td><code>key</code></td>
+    <td>The API key</td>
+</tr>
+<tr>
+    <td><code>key_env</code></td>
+    <td>The environment variable to load the API key from</td>
+</tr>
+<tr>
+    <td><code>api_base</code></td>
+    <td>The base URL for the API</td>
+</tr>
+<tr>
+    <td><code>can_stream</code></td>
+    <td>Whether the model can stream responses</td>
+</tr>
+<tr>
+    <td><code>no_system_prompt</code></td>
+    <td>Whether the model supports a separate system prompt</td>
+</tr>
+</table>
+
+Example of configuring a custom model using Ollama:
+
+```ron
+(
+    models: (
+        custom: [
+            open_ai(
+                name: "codellama",
+                api_model: "codellama",
+                key: "",  // Ollama doesn't need an API key
+                key_env: "",
+                api_base: "http://localhost:11434/v1",
+                can_stream: true,
+                no_system_prompt: false,
+            ),
+        ],
+        default: "codellama",
+    ),
+)
+```
+
 
 ### Check Configuration
 
