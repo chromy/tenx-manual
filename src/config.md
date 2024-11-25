@@ -9,6 +9,19 @@ Configuraton comes from three sources, in order of precedence:
 The location of the project configuration file also determines the project root
 (unless over-ridden).
 
+You can view the current configuration with:
+
+```bash
+tenx config
+```
+
+And you can view the default configuration with:
+
+```bash
+tenx config --defaults
+```
+
+
 ## Quick Example
 
 Tenx uses RON ([Rusty Object Notation](https://github.com/ron-rs/ron)) for its
