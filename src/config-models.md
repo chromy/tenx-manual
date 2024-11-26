@@ -46,7 +46,10 @@ environment variables:
 <tr>
     <td><code>DEEPINFRA_API_KEY</code></td>
     <td>
-        <code>qwen-coder</code> (Qwen/Qwen2.5-Coder-32B-Instruct)
+        <code>qwen</code> (Qwen/Qwen2.5-32B-Instruct)<br>
+        <code>llama-8b-turbo</code> (meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo)<br>
+        <code>llama-70b</code> (meta-llama/Meta-Llama-3.1-70B-Instruct)<br>
+        <code>deepseek</code> (deepseek-ai/DeepSeek-V2.5)
     </td>
 </tr>
 <tr>
