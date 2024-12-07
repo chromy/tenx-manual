@@ -2,6 +2,15 @@
 [Overview](./overview.md)
 [Quick start](./quickstart.md)
 
+# Concepts
+
+- [Project](./project.md)
+- [Session](./session.md)
+- [Validation](./validation.md)
+- [Formatting](./formatting.md)
+- [Models, Dialects, etc.](./models.md)
+
+
 # Configuration
 
 - [Overview](./config.md)
@@ -12,15 +21,6 @@
 - [dialect](./config-dialect.md)
 - [tags](./config-tags.md)
 
-
-# Concepts
-
-- [Concepts](./concepts.md)
-    - [Project](./project.md)
-    - [Session](./session.md)
-- [Validation](./validation.md)
-- [Formatting](./formatting.md)
-- [Models, Dialects, etc.](./models.md)
 
 # Examples
 
