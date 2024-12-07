@@ -10,6 +10,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 SRC = os.path.join(SCRIPT_DIR, "examples")
 DST = os.path.join(SCRIPT_DIR, "src/examples")
+EDITOR = "nvim --clean"
 
 
 @contextmanager
@@ -28,7 +29,9 @@ def temp_example_dir(source_dir):
 def vhs(tape_name):
     shutil.copy(os.path.join(SRC, f"{tape_name}.tape"), ".")
     shutil.copy(os.path.join(SRC, "common.tape"), ".")
-    subprocess.run(["vhs", f"./{tape_name}.tape"], check=True)
+    env = os.environ.copy()
+    env["EDITOR"] = EDITOR
+    subprocess.run(["vhs", f"./{tape_name}.tape"], check=True, env=env)
 
 
 def capture(example_name, path, prefix=None):
@@ -51,6 +54,7 @@ def quickstart():
 
 
 examples = {"quickstart": quickstart}
+
 
 def main(example_name=None):
     if example_name:

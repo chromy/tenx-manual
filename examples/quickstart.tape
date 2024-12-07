@@ -12,9 +12,10 @@ Enter
 
 Wait
 
+Sleep 2s
+
 Type "tenx code"
 Enter
-Sleep 500ms
 Type "iAdd a unit test"
 Sleep 500ms
 Escape
