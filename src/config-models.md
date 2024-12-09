@@ -44,12 +44,19 @@ environment variables:
     </td>
 </tr>
 <tr>
+    <td><code>DEEPSEEK_API_KEY</code></td>
+    <td>
+        <code>deepseek</code> (deepseek-chat)
+    </td>
+</tr>
+<tr>
     <td><code>DEEPINFRA_API_KEY</code></td>
     <td>
-        <code>qwen</code> (Qwen/Qwen2.5-32B-Instruct)<br>
+        <code>qwen</code> (Qwen/Qwen2.5-Coder-32B-Instruct)<br>
         <code>llama-8b-turbo</code> (meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo)<br>
         <code>llama-70b</code> (meta-llama/Meta-Llama-3.1-70B-Instruct)<br>
-        <code>deepseek</code> (deepseek-ai/DeepSeek-V2.5)
+        <code>llama33-70b</code> (meta-llama/Llama-3.3-70B-Instruct)<br>
+        <code>qwq</code> (Qwen/QwQ-32B-Preview)
     </td>
 </tr>
 <tr>
@@ -67,18 +74,12 @@ environment variables:
         <code>grok</code> (grok-beta)
     </td>
 </tr>
-<tr>
-    <td><code>GOOGLEAI_API_KEY</code></td>
-    <td>
-        <code>gemini</code> (gemini-exp-1114)
-    </td>
-</tr>
 </table>
 
 
 # Custom models
 
-Models configurations come in two varieities - **claude**, which is specific to
+Models configurations come in two varieties - **claude**, which is specific to
 the Anthropic API, and **openai**, which can be used for any model compatible
 with the OpenAI API.
 

@@ -1,0 +1,42 @@
+<svg width="80ch" height="24em" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+    <style>
+        * {
+            font-family: Courier, monospace;
+            font-size: 20px;
+        }
+        tspan, text {
+            font-variant-ligatures: none;
+            dominant-baseline: central;
+            white-space: pre;
+            fill: #708284;
+        }
+        .bg {
+            stroke-width: "0.5px";
+        }
+        <!-- Foreground ANSI colors -->
+        .fa2 { fill: #738a05; }
+    </style>
+    <rect width="100%" height="100%" x="0" y="0" style="fill: #001e27"/>
+<text x="0ch" y="0.5em"><tspan class="fa2">$ </tspan><tspan>tenx session</tspan></text>
+<text x="0ch" y="1.5em"><tspan>root: /private/var/folders/th/rc0b1fj50bl3y_s3xfnrz1qh0000gn/T/tmpfeunx_rw/quickstart</tspan></text>
+<text x="0ch" y="2.5em"><tspan>context:</tspan></text>
+<text x="0ch" y="3.5em"><tspan>  - project_map</tspan></text>
+<text x="0ch" y="4.5em"><tspan>edit:</tspan></text>
+<text x="0ch" y="5.5em"><tspan>  - src/lib.rs</tspan></text>
+<text x="0ch" y="7.5em"><tspan>========================================================================================================================</tspan></text>
+<text x="0ch" y="8.5em"><tspan>Step 0</tspan></text>
+<text x="0ch" y="9.5em"><tspan>========================================================================================================================</tspan></text>
+<text x="0ch" y="10.5em"><tspan>    prompt:</tspan></text>
+<text x="0ch" y="11.5em"><tspan>      Implement the fibonacci function</tspan></text>
+<text x="0ch" y="12.5em"><tspan>    comment:</tspan></text>
+<text x="0ch" y="13.5em"><tspan>      Ok.</tspan></text>
+<text x="0ch" y="14.5em"><tspan>    text:</tspan></text>
+<text x="0ch" y="15.5em"><tspan>      &lt;comment&gt;</tspan></text>
+<text x="0ch" y="16.5em"><tspan>    modified:</tspan></text>
+<text x="0ch" y="17.5em"><tspan>      - src/lib.rs (write)</tspan></text>
+<text x="0ch" y="18.5em"><tspan>    usage:</tspan></text>
+<text x="0ch" y="19.5em"><tspan>      cache_creation_input_tokens: 0</tspan></text>
+<text x="0ch" y="20.5em"><tspan>      cache_read_input_tokens: 1847</tspan></text>
+<text x="0ch" y="21.5em"><tspan>      input_tokens: 139</tspan></text>
+<text x="0ch" y="22.5em"><tspan>      output_tokens: 214</tspan></text>
+</svg>

@@ -9,7 +9,9 @@ Configures the project - that is, which files are included for editing.
 </thead>
 <tr>
     <td><code>include</code></td>
-    <td>Either <code>git</code> to use git-tracked files, or <code>glob([patterns])</code> for custom patterns</td>
+    <td>List of inclusion rules. Each rule can be either <code>git</code> to
+    include all git-tracked files, or <code>glob(pattern)</code> for glob
+    patterns</td>
 </tr>
 <tr>
     <td><code>exclude</code></td>
@@ -17,7 +19,7 @@ Configures the project - that is, which files are included for editing.
 </tr>
 <tr>
     <td><code>root</code></td>
-    <td>Either <code>discover</code> for automatic detection or <code>path("path")</code> for explicit path</td>
+    <td>Project root directory path</td>
 </tr>
 </table>
 
@@ -25,10 +27,13 @@ Configures the project - that is, which files are included for editing.
 
 ```ron
 (
-    project (
-        include: git,
+    project: (
+        include: [
+            git,
+            glob("scripts/*.py"),
+        ],
         exclude: ["*.md", "target/"],
-        root: discover,
+        root: "./",
     )
 )
 ```

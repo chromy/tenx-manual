@@ -34,23 +34,124 @@ def vhs(tape_name):
     subprocess.run(["vhs", f"./{tape_name}.tape"], check=True, env=env)
 
 
-def capture(example_name, path, prefix=None):
+def capture(example, suffix, path):
     source_path = os.path.abspath(path)
-    filename = os.path.basename(path)
-    if prefix:
-        dest_filename = f"{example_name}_{prefix}_{filename}"
-    else:
-        dest_filename = f"{example_name}_{filename}"
+    extension = os.path.splitext(path)[1]
+    dest_filename = f"{example}_{suffix}{extension}"
     dest_path = os.path.join(DST, dest_filename)
     shutil.copy2(source_path, dest_path)
 
 
+def capture_cmd(example, suffix, cmd, env=None):
+    dest_filename = f"{example}_{suffix}.txt"
+    dest_path = os.path.join(DST, dest_filename)
+    command_env = {"PATH": os.environ["PATH"]}
+    if env:
+        command_env.update(env)
+    try:
+        result = subprocess.run(
+            cmd, shell=True, env=command_env, text=True, capture_output=True, check=True
+        )
+        with open(dest_path, "w") as f:
+            f.write(f"$ {cmd}\n")
+            f.write(result.stdout)
+    except subprocess.CalledProcessError as e:
+        print(f"Command failed with exit code {e.returncode}")
+        print("STDOUT:")
+        print(e.stdout)
+        print("STDERR:")
+        print(e.stderr)
+        raise
+
+
+def capture_cmd_svg(
+    example,
+    suffix,
+    cmd,
+    env=None,
+    width=80,
+    fontsize=20,
+    colorscheme="Solarized Dark - Patched",
+):
+    dest_filename = f"{example}_{suffix}.svg"
+    dest_path = os.path.join(DST, dest_filename)
+    command_env = {"PATH": os.environ["PATH"]}
+    if env:
+        command_env.update(env)
+    try:
+        # Get command output
+        result = subprocess.run(
+            cmd,
+            shell=True,
+            env=command_env,
+            text=True,
+            capture_output=True,
+            check=True,
+        )
+        # Prepare input with colored prompt
+        prompt = "\033[32m$\033[0m "  # Green $ followed by space
+        full_output = f"{prompt}{cmd}\n{result.stdout}"
+
+        # Convert to SVG
+        process = subprocess.Popen(
+            [
+                "ansisvg",
+                "--colorscheme",
+                colorscheme,
+                "--width",
+                str(width),
+                "--fontsize",
+                str(fontsize),
+            ],
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=False,
+        )
+        svg_output, stderr = process.communicate(full_output.encode())
+        if process.returncode != 0:
+            raise subprocess.CalledProcessError(process.returncode, cmd, stderr=stderr)
+        with open(dest_path, "wb") as f:
+            f.write(svg_output)
+    except subprocess.CalledProcessError as e:
+        print(f"Command failed with exit code {e.returncode}")
+        print("STDERR:")
+        print(e.stderr)
+        raise
+
+
 def quickstart():
     with temp_example_dir("quickstart"):
-        capture("quickstart", "src/lib.rs", prefix="before")
-        vhs("quickstart")
-        capture("quickstart", "vid.gif")
-        capture("quickstart", "src/lib.rs", prefix="after")
+        capture("quickstart", "before", "src/lib.rs")
+
+        vhs("quickstart-quick")
+        capture("quickstart", "quick", "vid.gif")
+
+        capture_cmd_svg(
+            "quickstart",
+            "session",
+            "tenx session",
+            env={"ANTHROPIC_API_KEY": "my-api-key", "TENX_COLOR": "true"},
+        )
+
+        capture_cmd_svg(
+            "quickstart",
+            "check",
+            "tenx check",
+            env={"ANTHROPIC_API_KEY": "my-api-key", "TENX_COLOR": "true"},
+        )
+
+
+        vhs("quickstart-code")
+        capture("quickstart", "code", "vid.gif")
+        capture("quickstart", "after", "src/lib.rs")
+
+        capture_cmd_svg(
+            "quickstart",
+            "models",
+            "tenx models",
+            env={"ANTHROPIC_API_KEY": "my-api-key", "TENX_COLOR": "true"},
+        )
 
 
 examples = {"quickstart": quickstart}
