@@ -120,24 +120,20 @@ def capture_cmd_svg(
         raise
 
 
+TENV = {"ANTHROPIC_API_KEY": "my-api-key", "TENX_COLOR": "true"}
+
+
 def quickstart():
     with temp_example_dir("quickstart"):
         capture("quickstart_before", "src/lib.rs")
 
         vhs("quickstart_quick", "quickstart-quick")
+
         vhs("tenx_project", "tenx-project")
 
-        capture_cmd_svg(
-            "quickstart_session",
-            "tenx session",
-            env={"ANTHROPIC_API_KEY": "my-api-key", "TENX_COLOR": "true"},
-        )
+        capture_cmd_svg("quickstart_session", "tenx session", env=TENV)
 
-        capture_cmd_svg(
-            "quickstart_check",
-            "tenx check",
-            env={"ANTHROPIC_API_KEY": "my-api-key", "TENX_COLOR": "true"},
-        )
+        capture_cmd_svg("quickstart_check", "tenx check", env=TENV)
 
         vhs("quickstart_check", "quickstart-check")
 
@@ -145,23 +141,20 @@ def quickstart():
 
         capture("quickstart_after", "src/lib.rs")
 
-        capture_cmd_svg(
-            "quickstart_models",
-            "tenx models",
-            env={"ANTHROPIC_API_KEY": "my-api-key", "TENX_COLOR": "true"},
-        )
+        capture_cmd_svg("quickstart_models", "tenx models", env=TENV)
 
 
 def concepts():
     with temp_example_dir("concepts"):
-        capture_cmd_svg(
-            "concepts_project",
-            "tenx project",
-            env={"ANTHROPIC_API_KEY": "my-api-key", "TENX_COLOR": "true"},
-        )
+        capture_cmd_svg("concepts_project", "tenx project", env=TENV)
 
 
-examples = {"quickstart": quickstart, "concepts": concepts}
+def tenx():
+    capture_cmd_svg("tenx_help", "tenx --help", env=TENV)
+    capture_cmd_svg("tenx_code_help", "tenx code --help", env=TENV)
+
+
+examples = {"quickstart": quickstart, "concepts": concepts, "tenx": tenx}
 
 
 def main(example_name=None):

@@ -1,5 +1,6 @@
 
 [Overview](./overview.md)
+[The tenx command](./tenx.md)
 
 # Tutorial
 
