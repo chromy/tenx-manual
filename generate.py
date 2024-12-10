@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-import sys
 import os
 import shutil
-import tempfile
 import subprocess
+import sys
+import tempfile
 from contextlib import contextmanager
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-
 SRC = os.path.join(SCRIPT_DIR, "examples")
 DST = os.path.join(SCRIPT_DIR, "src/examples")
 EDITOR = "nvim --clean"
+VHS_OUTPUT = "vid.gif"
 
 
 @contextmanager
@@ -26,24 +26,25 @@ def temp_example_dir(source_dir):
             os.chdir(original_dir)
 
 
-def vhs(tape_name):
+def vhs(name, tape_name):
     shutil.copy(os.path.join(SRC, f"{tape_name}.tape"), ".")
     shutil.copy(os.path.join(SRC, "common.tape"), ".")
     env = os.environ.copy()
     env["EDITOR"] = EDITOR
     subprocess.run(["vhs", f"./{tape_name}.tape"], check=True, env=env)
+    capture(name, VHS_OUTPUT)
 
 
-def capture(example, suffix, path):
+def capture(name, path):
     source_path = os.path.abspath(path)
     extension = os.path.splitext(path)[1]
-    dest_filename = f"{example}_{suffix}{extension}"
+    dest_filename = f"{name}{extension}"
     dest_path = os.path.join(DST, dest_filename)
     shutil.copy2(source_path, dest_path)
 
 
-def capture_cmd(example, suffix, cmd, env=None):
-    dest_filename = f"{example}_{suffix}.txt"
+def capture_cmd(name, cmd, env=None):
+    dest_filename = f"{name}.txt"
     dest_path = os.path.join(DST, dest_filename)
     command_env = {"PATH": os.environ["PATH"]}
     if env:
@@ -65,15 +66,14 @@ def capture_cmd(example, suffix, cmd, env=None):
 
 
 def capture_cmd_svg(
-    example,
-    suffix,
+    name,
     cmd,
     env=None,
     width=80,
     fontsize=20,
     colorscheme="Solarized Dark - Patched",
 ):
-    dest_filename = f"{example}_{suffix}.svg"
+    dest_filename = f"{name}.svg"
     dest_path = os.path.join(DST, dest_filename)
     command_env = {"PATH": os.environ["PATH"]}
     if env:
@@ -122,33 +122,30 @@ def capture_cmd_svg(
 
 def quickstart():
     with temp_example_dir("quickstart"):
-        capture("quickstart", "before", "src/lib.rs")
+        capture("quickstart_before", "src/lib.rs")
 
-        vhs("quickstart-quick")
-        capture("quickstart", "quick", "vid.gif")
+        vhs("quickstart_quick", "quickstart-quick")
 
         capture_cmd_svg(
-            "quickstart",
-            "session",
+            "quickstart_session",
             "tenx session",
             env={"ANTHROPIC_API_KEY": "my-api-key", "TENX_COLOR": "true"},
         )
 
         capture_cmd_svg(
-            "quickstart",
-            "check",
+            "quickstart_check",
             "tenx check",
             env={"ANTHROPIC_API_KEY": "my-api-key", "TENX_COLOR": "true"},
         )
 
+        vhs("quickstart_check", "quickstart-check")
 
-        vhs("quickstart-code")
-        capture("quickstart", "code", "vid.gif")
-        capture("quickstart", "after", "src/lib.rs")
+        vhs("quickstart_code", "quickstart-code")
+
+        capture("quickstart_after", "src/lib.rs")
 
         capture_cmd_svg(
-            "quickstart",
-            "models",
+            "quickstart_models",
             "tenx models",
             env={"ANTHROPIC_API_KEY": "my-api-key", "TENX_COLOR": "true"},
         )

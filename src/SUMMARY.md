@@ -9,9 +9,7 @@
 
 - [Project](./project.md)
 - [Session](./session.md)
-- [Validation](./validation.md)
-- [Formatting](./formatting.md)
-- [Models, Dialects, etc.](./models.md)
+- [Checks](./Checks.md)
 
 
 # Configuration

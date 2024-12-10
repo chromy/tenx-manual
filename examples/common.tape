@@ -7,5 +7,3 @@ Set TypingSpeed 70ms
 Set Theme "Solarized Dark - Patched"
 Set CursorBlink true
 
-Output vid.webm
-

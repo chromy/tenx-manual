@@ -15,8 +15,9 @@
         }
         <!-- Foreground ANSI colors -->
         .fa2 { fill: #738a05; }
+        .fa4 { fill: #2176c7; }
     </style>
     <rect width="100%" height="100%" x="0" y="0" style="fill: #001e27"/>
 <text x="0ch" y="0.5em"><tspan class="fa2">$ </tspan><tspan>tenx check</tspan></text>
-<text x="0ch" y="1.5em"><tspan>pre check</tspan></text>
+<text x="0ch" y="1.5em"><tspan class="fa4">pre check</tspan></text>
 </svg>
