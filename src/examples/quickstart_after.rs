@@ -3,12 +3,14 @@ pub fn fibonacci(n: u64) -> Vec<u64> {
     if n == 0 {
         return vec![];
     }
-    if n == 1 {
-        return vec![0];
-    }
 
     let mut sequence = Vec::with_capacity(n as usize);
     sequence.push(0);
+
+    if n == 1 {
+        return sequence;
+    }
+
     sequence.push(1);
 
     for _ in 2..n {

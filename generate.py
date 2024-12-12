@@ -3,7 +3,6 @@ import os
 import shutil
 import subprocess
 import sys
-import tempfile
 from contextlib import contextmanager
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -11,19 +10,23 @@ SRC = os.path.join(SCRIPT_DIR, "examples")
 DST = os.path.join(SCRIPT_DIR, "src/examples")
 EDITOR = "nvim --clean"
 VHS_OUTPUT = "vid.gif"
+EXAMPLES_DIR = os.path.expanduser("~/tenx/examples")
 
 
 @contextmanager
 def temp_example_dir(source_dir):
-    with tempfile.TemporaryDirectory() as temp_dir:
-        dest_dir = os.path.join(temp_dir, source_dir)
-        shutil.copytree(os.path.join(SRC, source_dir), dest_dir)
-        original_dir = os.getcwd()
-        os.chdir(dest_dir)
-        try:
-            yield dest_dir
-        finally:
-            os.chdir(original_dir)
+    dest_dir = os.path.join(EXAMPLES_DIR, source_dir)
+    if os.path.exists(dest_dir):
+        shutil.rmtree(dest_dir)
+    os.makedirs(EXAMPLES_DIR, exist_ok=True)
+    shutil.copytree(os.path.join(SRC, source_dir), dest_dir)
+    original_dir = os.getcwd()
+    os.chdir(dest_dir)
+    try:
+        yield dest_dir
+    finally:
+        os.chdir(original_dir)
+        shutil.rmtree(dest_dir)
 
 
 def vhs(name, tape_name):
@@ -31,6 +34,7 @@ def vhs(name, tape_name):
     shutil.copy(os.path.join(SRC, "common.tape"), ".")
     env = os.environ.copy()
     env["EDITOR"] = EDITOR
+    env["TENX_COLOR"] = "true"
     subprocess.run(["vhs", f"./{tape_name}.tape"], check=True, env=env)
     capture(name, VHS_OUTPUT)
 
@@ -71,7 +75,7 @@ def capture_cmd_svg(
     env=None,
     width=80,
     fontsize=20,
-    colorscheme="Solarized Dark - Patched",
+    colorscheme="Tomorrow Night",
 ):
     dest_filename = f"{name}.svg"
     dest_path = os.path.join(DST, dest_filename)
@@ -154,7 +158,18 @@ def tenx():
     capture_cmd_svg("tenx_code_help", "tenx code --help", env=TENV)
 
 
-examples = {"quickstart": quickstart, "concepts": concepts, "tenx": tenx}
+def session():
+    with temp_example_dir("quickstart"):
+        vhs("tenx_new", "tenx-new")
+        capture_cmd_svg("tenx_session", "tenx session", env=TENV)
+
+
+examples = {
+    "quickstart": quickstart,
+    "concepts": concepts,
+    "tenx": tenx,
+    "session": session,
+}
 
 
 def main(example_name=None):

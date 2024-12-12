@@ -4,6 +4,6 @@ Set Height 600
 Set Padding 0
 Set Margin 0
 Set TypingSpeed 70ms
-Set Theme "Solarized Dark - Patched"
+Set Theme "Tomorrow Night"
 Set CursorBlink true
 

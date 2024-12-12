@@ -10,6 +10,7 @@
 
 - [Project](./project.md)
 - [Session](./session.md)
+- [Context](./context.md)
 - [Checks](./Checks.md)
 
 
