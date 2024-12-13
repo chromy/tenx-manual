@@ -1,4 +1,4 @@
-<svg width="80ch" height="6em" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+<svg width="80ch" height="38em" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
     <style>
         * {
             font-family: Courier, monospace;
@@ -19,6 +19,7 @@
         <!-- Foreground ANSI colors -->
         .fa2 { fill: #b5bd68; }
         .fa4 { fill: #81a2be; }
+        .fa6 { fill: #8abeb7; }
     </style>
     <rect width="100%" height="100%" x="0" y="0" style="fill: #1d1f21"/>
 <text x="0ch" y="0.5em"><tspan class="fa2">$ </tspan><tspan>tenx session</tspan></text>
@@ -26,4 +27,34 @@
 <text x="0ch" y="2.5em"><tspan>  </tspan><tspan class="bold fa4">root: </tspan><tspan>/Users/cortesi/tenx/examples/quickstart</tspan></text>
 <text x="0ch" y="3.5em"><tspan>  </tspan><tspan class="bold fa4">context:</tspan></text>
 <text x="0ch" y="4.5em"><tspan>    - project_map</tspan></text>
+<text x="0ch" y="5.5em"><tspan>  </tspan><tspan class="bold fa4">edit:</tspan></text>
+<text x="0ch" y="6.5em"><tspan>    - src/lib.rs</tspan></text>
+<text x="0ch" y="8.5em"><tspan>  ======================================================================================================================</tspan></text>
+<text x="0ch" y="9.5em"><tspan>  </tspan><tspan class="bold fa6">Step 0</tspan></text>
+<text x="0ch" y="10.5em"><tspan>  ======================================================================================================================</tspan></text>
+<text x="0ch" y="11.5em"><tspan>      </tspan><tspan class="bold fa4">prompt:</tspan></text>
+<text x="0ch" y="12.5em"><tspan>        Implement the fibonacci function</tspan></text>
+<text x="0ch" y="13.5em"><tspan>      </tspan><tspan class="bold fa4">model comment:</tspan></text>
+<text x="0ch" y="14.5em"><tspan>        Implementing fibonacci sequence generator up to nth number</tspan></text>
+<text x="0ch" y="15.5em"><tspan>      </tspan><tspan class="bold fa4">modified:</tspan></text>
+<text x="0ch" y="16.5em"><tspan>        - </tspan><tspan class="bold fa2">src/lib.rs </tspan><tspan>(write)</tspan></text>
+<text x="0ch" y="17.5em"><tspan>      </tspan><tspan class="bold fa4">usage:</tspan></text>
+<text x="0ch" y="18.5em"><tspan>        </tspan><tspan class="bold fa4">cache_creation_input_tokens</tspan><tspan>: 1847</tspan></text>
+<text x="0ch" y="19.5em"><tspan>        </tspan><tspan class="bold fa4">cache_read_input_tokens</tspan><tspan>: 0</tspan></text>
+<text x="0ch" y="20.5em"><tspan>        </tspan><tspan class="bold fa4">input_tokens</tspan><tspan>: 139</tspan></text>
+<text x="0ch" y="21.5em"><tspan>        </tspan><tspan class="bold fa4">output_tokens</tspan><tspan>: 190</tspan></text>
+<text x="0ch" y="23.5em"><tspan>  ======================================================================================================================</tspan></text>
+<text x="0ch" y="24.5em"><tspan>  </tspan><tspan class="bold fa6">Step 1</tspan></text>
+<text x="0ch" y="25.5em"><tspan>  ======================================================================================================================</tspan></text>
+<text x="0ch" y="26.5em"><tspan>      </tspan><tspan class="bold fa4">prompt:</tspan></text>
+<text x="0ch" y="27.5em"><tspan>        Add a unit test</tspan></text>
+<text x="0ch" y="28.5em"><tspan>      </tspan><tspan class="bold fa4">model comment:</tspan></text>
+<text x="0ch" y="29.5em"><tspan>        Adding basic test coverage for the fibonacci function</tspan></text>
+<text x="0ch" y="30.5em"><tspan>      </tspan><tspan class="bold fa4">modified:</tspan></text>
+<text x="0ch" y="31.5em"><tspan>        - </tspan><tspan class="bold fa2">src/lib.rs </tspan><tspan>(replace)</tspan></text>
+<text x="0ch" y="32.5em"><tspan>      </tspan><tspan class="bold fa4">usage:</tspan></text>
+<text x="0ch" y="33.5em"><tspan>        </tspan><tspan class="bold fa4">cache_creation_input_tokens</tspan><tspan>: 0</tspan></text>
+<text x="0ch" y="34.5em"><tspan>        </tspan><tspan class="bold fa4">cache_read_input_tokens</tspan><tspan>: 1847</tspan></text>
+<text x="0ch" y="35.5em"><tspan>        </tspan><tspan class="bold fa4">input_tokens</tspan><tspan>: 458</tspan></text>
+<text x="0ch" y="36.5em"><tspan>        </tspan><tspan class="bold fa4">output_tokens</tspan><tspan>: 204</tspan></text>
 </svg>

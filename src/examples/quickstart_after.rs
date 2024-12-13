@@ -1,23 +1,17 @@
-/// Returns a vector containing the first n numbers in the Fibonacci sequence.
+/// Returns a vector containing the first n numbers in the Fibonacci sequence
 pub fn fibonacci(n: u64) -> Vec<u64> {
     if n == 0 {
         return vec![];
     }
-
-    let mut sequence = Vec::with_capacity(n as usize);
-    sequence.push(0);
-
     if n == 1 {
-        return sequence;
+        return vec![0];
     }
 
-    sequence.push(1);
-
-    for _ in 2..n {
+    let mut sequence = vec![0, 1];
+    while sequence.len() < n as usize {
         let next = sequence[sequence.len() - 1] + sequence[sequence.len() - 2];
         sequence.push(next);
     }
-
     sequence
 }
 

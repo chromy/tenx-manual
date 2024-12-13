@@ -5,6 +5,10 @@ import subprocess
 import sys
 from contextlib import contextmanager
 
+# Test environment for when output matters
+TENV = {"ANTHROPIC_API_KEY": "my-api-key", "TENX_COLOR": "true"}
+
+
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(SCRIPT_DIR, "examples")
 DST = os.path.join(SCRIPT_DIR, "src/examples")
@@ -15,6 +19,7 @@ EXAMPLES_DIR = os.path.expanduser("~/tenx/examples")
 
 @contextmanager
 def temp_example_dir(source_dir):
+    print(f"entering temp dir: {source_dir}")
     dest_dir = os.path.join(EXAMPLES_DIR, source_dir)
     if os.path.exists(dest_dir):
         shutil.rmtree(dest_dir)
@@ -30,12 +35,13 @@ def temp_example_dir(source_dir):
 
 
 def vhs(name, tape_name):
+    print(f"vhs: {name}")
     shutil.copy(os.path.join(SRC, f"{tape_name}.tape"), ".")
     shutil.copy(os.path.join(SRC, "common.tape"), ".")
     env = os.environ.copy()
     env["EDITOR"] = EDITOR
     env["TENX_COLOR"] = "true"
-    subprocess.run(["vhs", f"./{tape_name}.tape"], check=True, env=env)
+    subprocess.run(["vhs", "--quiet", f"./{tape_name}.tape"], check=True, env=env)
     capture(name, VHS_OUTPUT)
 
 
@@ -48,6 +54,7 @@ def capture(name, path):
 
 
 def capture_cmd(name, cmd, env=None):
+    print(f"capture_cmd: {name}")
     dest_filename = f"{name}.txt"
     dest_path = os.path.join(DST, dest_filename)
     command_env = {"PATH": os.environ["PATH"]}
@@ -77,6 +84,7 @@ def capture_cmd_svg(
     fontsize=20,
     colorscheme="Tomorrow Night",
 ):
+    print(f"capture_cmd_svg: {name}")
     dest_filename = f"{name}.svg"
     dest_path = os.path.join(DST, dest_filename)
     command_env = {"PATH": os.environ["PATH"]}
@@ -124,9 +132,6 @@ def capture_cmd_svg(
         raise
 
 
-TENV = {"ANTHROPIC_API_KEY": "my-api-key", "TENX_COLOR": "true"}
-
-
 def quickstart():
     with temp_example_dir("quickstart"):
         capture("quickstart_before", "src/lib.rs")
@@ -142,6 +147,8 @@ def quickstart():
         vhs("quickstart_check", "quickstart-check")
 
         vhs("quickstart_code", "quickstart-code")
+
+        capture_cmd_svg("tenx_session", "tenx session", env=TENV)
 
         capture("quickstart_after", "src/lib.rs")
 
@@ -161,7 +168,6 @@ def tenx():
 def session():
     with temp_example_dir("quickstart"):
         vhs("tenx_new", "tenx-new")
-        capture_cmd_svg("tenx_session", "tenx session", env=TENV)
 
 
 examples = {
