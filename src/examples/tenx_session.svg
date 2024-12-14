@@ -35,26 +35,26 @@
 <text x="0ch" y="11.5em"><tspan>      </tspan><tspan class="bold fa4">prompt:</tspan></text>
 <text x="0ch" y="12.5em"><tspan>        Implement the fibonacci function</tspan></text>
 <text x="0ch" y="13.5em"><tspan>      </tspan><tspan class="bold fa4">model comment:</tspan></text>
-<text x="0ch" y="14.5em"><tspan>        Implementing fibonacci sequence generator up to nth number</tspan></text>
+<text x="0ch" y="14.5em"><tspan>        Implementing fibonacci sequence generator</tspan></text>
 <text x="0ch" y="15.5em"><tspan>      </tspan><tspan class="bold fa4">modified:</tspan></text>
 <text x="0ch" y="16.5em"><tspan>        - </tspan><tspan class="bold fa2">src/lib.rs </tspan><tspan>(write)</tspan></text>
 <text x="0ch" y="17.5em"><tspan>      </tspan><tspan class="bold fa4">usage:</tspan></text>
 <text x="0ch" y="18.5em"><tspan>        </tspan><tspan class="bold fa4">cache_creation_input_tokens</tspan><tspan>: 1847</tspan></text>
 <text x="0ch" y="19.5em"><tspan>        </tspan><tspan class="bold fa4">cache_read_input_tokens</tspan><tspan>: 0</tspan></text>
 <text x="0ch" y="20.5em"><tspan>        </tspan><tspan class="bold fa4">input_tokens</tspan><tspan>: 139</tspan></text>
-<text x="0ch" y="21.5em"><tspan>        </tspan><tspan class="bold fa4">output_tokens</tspan><tspan>: 190</tspan></text>
+<text x="0ch" y="21.5em"><tspan>        </tspan><tspan class="bold fa4">output_tokens</tspan><tspan>: 204</tspan></text>
 <text x="0ch" y="23.5em"><tspan>  ======================================================================================================================</tspan></text>
 <text x="0ch" y="24.5em"><tspan>  </tspan><tspan class="bold fa6">Step 1</tspan></text>
 <text x="0ch" y="25.5em"><tspan>  ======================================================================================================================</tspan></text>
 <text x="0ch" y="26.5em"><tspan>      </tspan><tspan class="bold fa4">prompt:</tspan></text>
 <text x="0ch" y="27.5em"><tspan>        Add a unit test</tspan></text>
 <text x="0ch" y="28.5em"><tspan>      </tspan><tspan class="bold fa4">model comment:</tspan></text>
-<text x="0ch" y="29.5em"><tspan>        Adding basic test coverage for the fibonacci function</tspan></text>
+<text x="0ch" y="29.5em"><tspan>        Adding basic unit test for fibonacci function</tspan></text>
 <text x="0ch" y="30.5em"><tspan>      </tspan><tspan class="bold fa4">modified:</tspan></text>
 <text x="0ch" y="31.5em"><tspan>        - </tspan><tspan class="bold fa2">src/lib.rs </tspan><tspan>(replace)</tspan></text>
 <text x="0ch" y="32.5em"><tspan>      </tspan><tspan class="bold fa4">usage:</tspan></text>
 <text x="0ch" y="33.5em"><tspan>        </tspan><tspan class="bold fa4">cache_creation_input_tokens</tspan><tspan>: 0</tspan></text>
 <text x="0ch" y="34.5em"><tspan>        </tspan><tspan class="bold fa4">cache_read_input_tokens</tspan><tspan>: 1847</tspan></text>
-<text x="0ch" y="35.5em"><tspan>        </tspan><tspan class="bold fa4">input_tokens</tspan><tspan>: 458</tspan></text>
-<text x="0ch" y="36.5em"><tspan>        </tspan><tspan class="bold fa4">output_tokens</tspan><tspan>: 204</tspan></text>
+<text x="0ch" y="35.5em"><tspan>        </tspan><tspan class="bold fa4">input_tokens</tspan><tspan>: 486</tspan></text>
+<text x="0ch" y="36.5em"><tspan>        </tspan><tspan class="bold fa4">output_tokens</tspan><tspan>: 203</tspan></text>
 </svg>

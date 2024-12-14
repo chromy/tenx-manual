@@ -149,6 +149,7 @@ def quickstart():
         vhs("quickstart_code", "quickstart-code")
 
         capture_cmd_svg("tenx_session", "tenx session", env=TENV)
+        capture_cmd_svg("tenx_files", "tenx files", env=TENV)
 
         capture("quickstart_after", "src/lib.rs")
 
@@ -161,6 +162,7 @@ def concepts():
 
 
 def tenx():
+    capture_cmd_svg("tenx_ctx", "tenx ctx --help", env=TENV)
     capture_cmd_svg("tenx_help", "tenx --help", env=TENV)
     capture_cmd_svg("tenx_code_help", "tenx code --help", env=TENV)
 

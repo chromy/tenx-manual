@@ -18,10 +18,11 @@
 
 - [Overview](./config.md)
 - [Global settings](./config-global.md)
-- [project](./config-project.md)
-- [models](./config-models.md)
 - [checks](./config-checks.md)
+- [context](./config-context.md)
 - [dialect](./config-dialect.md)
+- [models](./config-models.md)
+- [project](./config-project.md)
 - [tags](./config-tags.md)
 
 
