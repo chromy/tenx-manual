@@ -165,6 +165,7 @@ def tenx():
     capture_cmd_svg("tenx_ctx", "tenx ctx --help", env=TENV)
     capture_cmd_svg("tenx_help", "tenx --help", env=TENV)
     capture_cmd_svg("tenx_code_help", "tenx code --help", env=TENV)
+    capture_cmd_svg("tenx_checks", "tenx checks --all", env=TENV)
 
 
 def session():

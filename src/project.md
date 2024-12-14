@@ -18,3 +18,13 @@ You can view the list of files included in the project - after include rules
 and exclude globs have been applied - using the `tenx files` command:
 
 <img src="examples/tenx_files.svg"/>
+
+Many Tenx commands take a glob pattern as an argument, where the patter is
+matched over the files in the project. So, for instance, we can add all Rust
+files in the project to an edit session like so:
+
+```shell
+tenx edit "**/*.rs"
+```
+
+Notice that we are quoting the glob pattern to prevent the shell from expanding it.
