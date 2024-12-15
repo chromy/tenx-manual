@@ -24,7 +24,11 @@ Let's take a look at Tenx's built-in checks:
 
 <img src="examples/tenx_checks.svg"/>
 
-There are a few things to note here. First, each check has a glob pattern that
+There are a few things to note here. Each check has a glob pattern that
 determines when it runs - a check only runs if its glob pattern matches a file
-that was **edited** during the session. Second, checks are ordered - so **cargo
-check** will perform type checking before **cargo test** runs unit tests.
+that was **edited** during the session. Checks are ordered - so **cargo check**
+will perform type checking before **cargo test** runs unit tests. Lastly,
+checks can be disabled by default - `cargo clippy` is a bit too noisy to run by
+default, so the user has to enable it in their config or on the command line
+with the `--check` flag.
+

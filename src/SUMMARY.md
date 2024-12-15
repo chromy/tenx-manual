@@ -2,9 +2,12 @@
 [Overview](./overview.md)
 [The tenx command](./tenx.md)
 
-# Tutorial
+# Tutorials
 
-- [Quick start](./quickstart.md)
+- [Quick start](./tutorial-quickstart.md)
+- [Fixing code with tenx fix](./tutorial-fix.md)
+- [Contexts: Rust and Ruskel](./tutorial-context.md)
+- [Custom Checks: Python Unit Tests](./tutorial-checks.md)
 
 # Concepts
 
@@ -25,8 +28,3 @@
 - [project](./config-project.md)
 - [tags](./config-tags.md)
 
-
-# Examples
-
-- [Working in Rust](./rust.md)
-- [Working in Python](./python.md)
