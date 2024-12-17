@@ -86,6 +86,7 @@ def capture_cmd_svg(
     width=80,
     fontsize=20,
     colorscheme="Tomorrow Night",
+    accept_error=False,
 ):
     print(f"capture_cmd_svg: {name}")
     dest_filename = f"{name}.svg"
@@ -101,7 +102,7 @@ def capture_cmd_svg(
             env=command_env,
             text=True,
             capture_output=True,
-            check=True,
+            check=not accept_error,
         )
         # Prepare input with colored prompt
         prompt = "\033[32m$\033[0m "  # Green $ followed by space
@@ -202,8 +203,15 @@ def context():
         capture_cmd("ruskel_run", "cargo run")
 
 
+def checks():
+    with temp_example_dir("ptest"):
+        capture_cmd_svg("checks_checks", "tenx checks", env=TENV)
+        vhs("checks_run", "checks-run")
+
+
 examples = {
     "quickstart": quickstart,
+    "checks": checks,
     "concepts": concepts,
     "context": context,
     "tenx": tenx,

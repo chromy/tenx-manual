@@ -1,0 +1,19 @@
+(
+    project: (
+        include: [
+            glob("*.py"),
+        ],
+        exclude: [
+            ".venv/**",
+        ],
+    ),
+    checks: (
+        custom: [
+            (
+                name: "pytest",
+                command: "uv run pytest *.py",
+                globs: ["**/*.py"],
+            ),
+        ]
+    )
+)
