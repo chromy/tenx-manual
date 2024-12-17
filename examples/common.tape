@@ -6,4 +6,5 @@ Set Margin 0
 Set TypingSpeed 70ms
 Set Theme "Tomorrow Night"
 Set CursorBlink true
+Set WaitTimeout 2m
 

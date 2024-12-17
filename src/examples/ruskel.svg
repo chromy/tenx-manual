@@ -1,0 +1,47 @@
+<svg width="80ch" height="23em" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+    <style>
+        * {
+            font-family: Courier, monospace;
+            font-size: 20px;
+        }
+        tspan, text {
+            font-variant-ligatures: none;
+            dominant-baseline: central;
+            white-space: pre;
+            fill: #c5c8c6;
+        }
+        .bg {
+            stroke-width: "0.5px";
+        }
+        <!-- Foreground ANSI colors -->
+        .fa2 { fill: #b5bd68; }
+        <!-- Foreground custom colors -->
+        .fc0 { fill: #93a1a1; }
+        .fc1 { fill: #839496; }
+        .fc2 { fill: #268bd2; }
+        .fc3 { fill: #b58900; }
+        .fc4 { fill: #657b83; }
+        .fc5 { fill: #586e75; }
+    </style>
+    <rect width="100%" height="100%" x="0" y="0" style="fill: #1d1f21"/>
+<text x="0ch" y="0.5em"><tspan class="fa2">$ </tspan><tspan>ruskel termsize</tspan></text>
+<text x="0ch" y="1.5em"><tspan class="fc0">pub </tspan><tspan class="fc2">mod </tspan><tspan class="fc3">termsize </tspan><tspan class="fc4">{</tspan></text>
+<text x="0ch" y="2.5em"><tspan>    </tspan><tspan class="fc5">//! Termsize is a tiny crate that provides a simple</tspan></text>
+<text x="0ch" y="3.5em"><tspan>    </tspan><tspan class="fc5">//! interface for retrieving the current</tspan></text>
+<text x="0ch" y="4.5em"><tspan>    </tspan><tspan class="fc5">//! [terminal interface](http://www.manpagez.com/man/4/tty/) size</tspan></text>
+<text x="0ch" y="5.5em"><tspan>    </tspan><tspan class="fc5">//!</tspan></text>
+<text x="0ch" y="6.5em"><tspan>    </tspan><tspan class="fc5">//! ```rust</tspan></text>
+<text x="0ch" y="7.5em"><tspan>    </tspan><tspan class="fc5">//! extern crate termsize;</tspan></text>
+<text x="0ch" y="8.5em"><tspan>    </tspan><tspan class="fc5">//!</tspan></text>
+<text x="0ch" y="9.5em"><tspan>    </tspan><tspan class="fc5">//! termsize::get().map(|size| println!(&#34;rows {} cols {}&#34;, size.rows, size.cols));</tspan></text>
+<text x="0ch" y="10.5em"><tspan>    </tspan><tspan class="fc5">//! ```</tspan></text>
+<text x="0ch" y="12.5em"><tspan>    </tspan><tspan class="fc5">/// Container for number of rows and columns</tspan></text>
+<text x="0ch" y="13.5em"><tspan>    </tspan><tspan class="fc1">#</tspan><tspan class="fc4">[</tspan><tspan class="fc2">derive</tspan><tspan class="fc4">(</tspan><tspan class="fc1">Debug</tspan><tspan class="fc4">)]</tspan></text>
+<text x="0ch" y="14.5em"><tspan>    </tspan><tspan class="fc0">pub </tspan><tspan class="fc2">struct </tspan><tspan class="fc3">Size </tspan><tspan class="fc4">{</tspan></text>
+<text x="0ch" y="15.5em"><tspan>        </tspan><tspan class="fc0">pub </tspan><tspan class="fc2">rows</tspan><tspan class="fc1">: </tspan><tspan class="fc2">u16</tspan><tspan class="fc1">,</tspan></text>
+<text x="0ch" y="16.5em"><tspan>        </tspan><tspan class="fc0">pub </tspan><tspan class="fc2">cols</tspan><tspan class="fc1">: </tspan><tspan class="fc2">u16</tspan><tspan class="fc1">,</tspan></text>
+<text x="0ch" y="17.5em"><tspan>    </tspan><tspan class="fc4">}</tspan></text>
+<text x="0ch" y="19.5em"><tspan>    </tspan><tspan class="fc5">/// Gets the current terminal size</tspan></text>
+<text x="0ch" y="20.5em"><tspan>    </tspan><tspan class="fc0">pub </tspan><tspan class="fc2">fn </tspan><tspan class="fc3">get</tspan><tspan class="fc4">() </tspan><tspan class="fc1">-&gt; Option&lt;self::super::Size&gt; </tspan><tspan class="fc4">{}</tspan></text>
+<text x="0ch" y="21.5em"><tspan class="fc4">}</tspan></text>
+</svg>

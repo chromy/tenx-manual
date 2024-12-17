@@ -6,7 +6,11 @@ import sys
 from contextlib import contextmanager
 
 # Test environment for when output matters
-TENV = {"ANTHROPIC_API_KEY": "my-api-key", "TENX_COLOR": "true"}
+TENV = {
+    "ANTHROPIC_API_KEY": "my-api-key",
+    "TENX_COLOR": "true",
+    "RUSKEL_COLOR": "always",
+}
 
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -54,18 +58,17 @@ def capture(name, path):
 
 
 def capture_cmd(name, cmd, env=None):
+    """
+    Capture raw cmd output to a text file. Inherits the full environment.
+    """
     print(f"capture_cmd: {name}")
     dest_filename = f"{name}.txt"
     dest_path = os.path.join(DST, dest_filename)
-    command_env = {"PATH": os.environ["PATH"]}
-    if env:
-        command_env.update(env)
     try:
         result = subprocess.run(
-            cmd, shell=True, env=command_env, text=True, capture_output=True, check=True
+            cmd, shell=True, text=True, capture_output=True, check=True
         )
         with open(dest_path, "w") as f:
-            f.write(f"$ {cmd}\n")
             f.write(result.stdout)
     except subprocess.CalledProcessError as e:
         print(f"Command failed with exit code {e.returncode}")
@@ -132,6 +135,17 @@ def capture_cmd_svg(
         raise
 
 
+def fix():
+    with temp_example_dir("fix"):
+        capture("fix_before", "src/lib.rs")
+
+        vhs("fix_check", "fix-check")
+
+        vhs("fix_fix", "fix-fix")
+
+        capture("fix_after", "src/lib.rs")
+
+
 def quickstart():
     with temp_example_dir("quickstart"):
         capture("quickstart_before", "src/lib.rs")
@@ -173,11 +187,28 @@ def session():
         vhs("tenx_new", "tenx-new")
 
 
+def context():
+    with temp_example_dir("ruskel"):
+        capture_cmd_svg("ruskel", "ruskel termsize", env=TENV)
+
+        capture("context_before", "src/main.rs")
+
+        vhs("ruskel_setup", "ruskel-setup")
+
+        vhs("ruskel_code", "ruskel-code")
+
+        capture("context_after", "src/main.rs")
+
+        capture_cmd("ruskel_run", "cargo run")
+
+
 examples = {
     "quickstart": quickstart,
     "concepts": concepts,
+    "context": context,
     "tenx": tenx,
     "session": session,
+    "fix": fix,
 }
 
 

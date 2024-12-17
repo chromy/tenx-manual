@@ -1,0 +1,8 @@
+(
+    project: (
+        include: [
+            glob("**/*.rs"),
+            glob("**/*.toml"),
+        ],
+    )
+)
