@@ -1,6 +1,7 @@
 # Project
 
-Configures the project - that is, which files are included for editing.
+Configures the project - that is, the location of our file tree, and which
+files are included for editing.
 
 <table>
 <thead>
@@ -8,18 +9,14 @@ Configures the project - that is, which files are included for editing.
     <th>Description</th>
 </thead>
 <tr>
-    <td><code>include</code></td>
-    <td>List of inclusion rules. Each rule can be either <code>git</code> to
-    include all git-tracked files, or <code>glob(pattern)</code> for glob
-    patterns</td>
-</tr>
-<tr>
-    <td><code>exclude</code></td>
-    <td>List of glob patterns for files to exclude</td>
+    <td><code>globs</code></td>
+    <td>List of inclusion and exclusion glob patterns. Exclusion paterns start
+    with a <b>!</b>. By default, all files in the root are included, unless
+    excluded in a .gitignore, .ignore or git exclude file.</td>
 </tr>
 <tr>
     <td><code>root</code></td>
-    <td>Project root directory path</td>
+    <td>Project root directory</td>
 </tr>
 </table>
 
@@ -28,11 +25,10 @@ Configures the project - that is, which files are included for editing.
 ```ron
 (
     project: (
-        include: [
-            git,
-            glob("scripts/*.py"),
+        globs: [
+            "!target/**",
+            "**/*.rs",
         ],
-        exclude: ["*.md", "target/"],
         root: "./",
     )
 )
