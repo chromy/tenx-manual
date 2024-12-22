@@ -11,10 +11,11 @@
 
 # Concepts
 
+- [Checks](./checks.md)
+- [Context](./context.md)
+- [Globs](./globs.md)
 - [Project](./project.md)
 - [Session](./session.md)
-- [Context](./context.md)
-- [Checks](./checks.md)
 
 
 # Configuration
