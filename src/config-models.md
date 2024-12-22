@@ -60,6 +60,24 @@ environment variables:
     </td>
 </tr>
 <tr>
+    <td><code>GOOGLEAI_API_KEY</code></td>
+    <td>
+        <code>gemini-exp</code> (gemini-exp-1206)<br>
+        <code>gemini-flash-exp</code> (gemini-2.0-flash-exp)<br>
+        <code>gemini-flash-thinking-exp</code> (gemini-2.0-flash-thinking-exp-1219)<br>
+        <code>gemini-15pro</code> (gemini-1.5-pro)<br>
+        <code>gemini-15flash</code> (gemini-1.5-flash)<br>
+        <code>gemini-15flash8b</code> (gemini-1.5-flash-8b)
+    </td>
+</tr>
+<tr>
+    <td><code>GROQ_API_KEY</code></td>
+    <td>
+        <code>groq-llama33-70b</code> (llama-3.3-70b-versatile)<br>
+        <code>groq-llama31-8b</code> (llama-3.1-8b-instant)
+    </td>
+</tr>
+<tr>
     <td><code>OPENAI_API_KEY</code></td>
     <td>
         <code>o1</code> (o1-preview)<br>
