@@ -33,15 +33,15 @@
 <text x="0ch" y="9.5em"><tspan>  </tspan><tspan class="bold fa6">Step 0</tspan></text>
 <text x="0ch" y="10.5em"><tspan>  ======================================================================================================================</tspan></text>
 <text x="0ch" y="11.5em"><tspan>      </tspan><tspan class="bold fa4">prompt:</tspan></text>
-<text x="0ch" y="12.5em"><tspan>        Implement the fibonacci function</tspan></text>
+<text x="0ch" y="12.5em"><tspan>        Implement the fibonacci function. Don&#39;t add tests for now.</tspan></text>
 <text x="0ch" y="13.5em"><tspan>      </tspan><tspan class="bold fa4">model comment:</tspan></text>
-<text x="0ch" y="14.5em"><tspan>        Implementing fibonacci sequence generator returning first n numbers.</tspan></text>
+<text x="0ch" y="14.5em"><tspan>        Ok.</tspan></text>
 <text x="0ch" y="15.5em"><tspan>      </tspan><tspan class="bold fa4">modified:</tspan></text>
 <text x="0ch" y="16.5em"><tspan>        - </tspan><tspan class="bold fa2">src/lib.rs</tspan></text>
 <text x="0ch" y="17.5em"><tspan>          write (1)</tspan></text>
 <text x="0ch" y="18.5em"><tspan>      </tspan><tspan class="bold fa4">usage:</tspan></text>
 <text x="0ch" y="19.5em"><tspan>        </tspan><tspan class="bold fa4">cache_creation_input_tokens</tspan><tspan>: 0</tspan></text>
 <text x="0ch" y="20.5em"><tspan>        </tspan><tspan class="bold fa4">cache_read_input_tokens</tspan><tspan>: 1888</tspan></text>
-<text x="0ch" y="21.5em"><tspan>        </tspan><tspan class="bold fa4">input_tokens</tspan><tspan>: 151</tspan></text>
-<text x="0ch" y="22.5em"><tspan>        </tspan><tspan class="bold fa4">output_tokens</tspan><tspan>: 210</tspan></text>
+<text x="0ch" y="21.5em"><tspan>        </tspan><tspan class="bold fa4">input_tokens</tspan><tspan>: 159</tspan></text>
+<text x="0ch" y="22.5em"><tspan>        </tspan><tspan class="bold fa4">output_tokens</tspan><tspan>: 193</tspan></text>
 </svg>

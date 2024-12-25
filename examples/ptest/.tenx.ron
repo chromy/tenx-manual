@@ -1,6 +1,6 @@
 (
     project: (
-        globs: [
+        include: [
             "**/*.py", "!.venv/**",
         ],
     ),

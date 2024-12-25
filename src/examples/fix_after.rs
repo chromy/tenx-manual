@@ -3,16 +3,17 @@ pub fn fibonacci(n: u64) -> Vec<u64> {
     if n == 0 {
         return vec![];
     }
-    let mut sequence = vec![0];
+    let mut result = Vec::with_capacity(n as usize);
+    result.push(0);
     if n == 1 {
-        return sequence;
+        return result;
     }
-    sequence.push(1);
-    for _ in 2..n {
-        let next = sequence[sequence.len() - 1] + sequence[sequence.len() - 2];
-        sequence.push(next);
+    result.push(1);
+    for i in 2..n {
+        let next = result[i as usize - 1] + result[i as usize - 2];
+        result.push(next);
     }
-    sequence
+    result
 }
 
 #[cfg(test)]
