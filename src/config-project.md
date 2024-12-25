@@ -9,7 +9,7 @@ files are included for editing.
     <th>Description</th>
 </thead>
 <tr>
-    <td><code>globs</code></td>
+    <td><code>include</code></td>
     <td>List of inclusion and exclusion glob patterns. Exclusion paterns start
     with a <b>!</b>. By default, all files in the root are included, unless
     excluded in a .gitignore, .ignore or git exclude file.</td>
@@ -25,7 +25,7 @@ files are included for editing.
 ```ron
 (
     project: (
-        globs: [
+        include: [
             "!target/**",
             "**/*.rs",
         ],

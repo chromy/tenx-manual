@@ -21,4 +21,8 @@ The syntax for these patterns are as follows[^1]:
 * Metacharacters such as `*` and `?` can be escaped with character class
   notation. e.g., `[*]` matches `*`.
 
+In some places, negative globs are allowed. These are globs that start with
+`!`, and they exclude files that match the pattern. For example, `!**/*.rs`
+would exclude all Rust files from a set of files.
+
   [^1]: From docs for the [globset](https://docs.rs/globset/latest/globset/) crate.

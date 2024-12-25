@@ -1,9 +1,7 @@
 (
     project: (
-        include: [
-            git,
-            glob("scripts/*.py"),
+        globs: [
+            "**/*.rs",
         ],
-        exclude: ["*.md", "target/"],
     )
 )

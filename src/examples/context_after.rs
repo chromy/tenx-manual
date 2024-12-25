@@ -1,40 +1,26 @@
-use misanthropy::{Anthropic, Content, Message, MessagesRequest, Role};
+use misanthropy::{
+    Anthropic, Content, Message, MessagesRequest, Result, Role, Text, ANTHROPIC_API_KEY_ENV,
+    DEFAULT_MAX_TOKENS, DEFAULT_MODEL,
+};
+use tokio;
 
 #[tokio::main]
-async fn main() {
-    // Create the Anthropic client using the API key from the environment
-    let client = Anthropic::from_env().expect("Failed to create Anthropic client");
+async fn main() -> Result<()> {
+    let api_key = std::env::var(ANTHROPIC_API_KEY_ENV).expect("API key not found in environment");
 
-    // Create a new message
-    let user_message = Message {
-        role: Role::User,
-        content: vec![Content::Text(misanthropy::Text {
-            text: "How do you feel?".into(),
-            cache_control: None,
-        })],
-    };
-
-    // Create a request with the message
+    let client = Anthropic::new(&api_key);
     let request = MessagesRequest {
-        model: misanthropy::DEFAULT_MODEL.into(),
-        max_tokens: 100,
-        messages: vec![user_message],
-        system: Vec::new(),
-        temperature: None,
-        stream: false,
-        tools: Vec::new(),
-        tool_choice: misanthropy::ToolChoice::Auto,
-        stop_sequences: Vec::new(),
+        model: DEFAULT_MODEL.to_string(),
+        max_tokens: DEFAULT_MAX_TOKENS,
+        messages: vec![Message {
+            role: Role::User,
+            content: vec![Content::Text(Text::new("How do you feel?"))],
+        }],
+        ..Default::default()
     };
 
-    // Send the message request and capture the response
-    match client.messages(&request).await {
-        Ok(response) => {
-            // Format and print the AI response
-            println!("Claude: {}", response.format_content());
-        }
-        Err(e) => {
-            eprintln!("Failed to get a response: {:?}", e);
-        }
-    }
+    let response = client.messages(&request).await?;
+    println!("{}", response.format_content());
+
+    Ok(())
 }

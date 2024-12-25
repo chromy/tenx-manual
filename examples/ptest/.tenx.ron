@@ -1,10 +1,7 @@
 (
     project: (
-        include: [
-            glob("*.py"),
-        ],
-        exclude: [
-            ".venv/**",
+        globs: [
+            "**/*.py", "!.venv/**",
         ],
     ),
     checks: (

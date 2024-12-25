@@ -4,7 +4,7 @@ Output vid.gif
 Type "tenx quick ./src/lib.rs"
 Enter
 Sleep 500ms
-Type "iImplement the fibonacci generator"
+Type "iImplement the fibonacci generator. Don't add tests for the moment."
 Sleep 500ms
 Escape
 Type ":wq"

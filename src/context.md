@@ -22,13 +22,16 @@ you can define default context that is added to every session.
 
 ## Context Types
 
+### cmd
+
+The *cmd* context type executes a shell command and uses its output as context. The command is run with `sh -c`, and both stdout and stderr are captured. This can be useful for including the output of tools like `git log`, compiler messages, or command-line tool output in your context.
+
 ### file
 
 The *file* context type is similar to *text*, but it reads the text from a
 file, and the name of the file is associated with the context and visible to
 the model. The content of the file context is refreshed every time we contact
 the model, so you can edit the file and the model will see the changes.
-
 
 ### project_map
 
@@ -40,10 +43,10 @@ available.
 
 ### ruskel
 
-[Ruskel](https://github.com/cortesi/ruskel) is that extracts the public surface
-area of a Rust project - that is, the public functions, types, traits, and
-modules - and renders it to syntactically valid Rust code. This is useful for
-including the API of a Rust module in the context of a session. This can be
+[Ruskel](https://github.com/cortesi/ruskel) is a tool that extracts the public
+surface area of a Rust project - that is, the public functions, types, traits,
+and modules - and renders it to syntactically valid Rust code. This is useful
+for including the API of a Rust module in the context of a session. This can be
 either local or any crate on [crates.io](https://crates.io).
 
 See the [Working in Rust](./rust.md) example for a demonstration of how to use
@@ -58,4 +61,3 @@ directly through stdin.
 ### url
 
 The *url* context type fetches the content of a URL and provides it to the model.
-

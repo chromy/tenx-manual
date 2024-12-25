@@ -23,5 +23,5 @@
     <rect width="100%" height="100%" x="0" y="0" style="fill: #1d1f21"/>
 <text x="0ch" y="0.5em"><tspan class="fa2">$ </tspan><tspan>tenx project</tspan></text>
 <text x="0ch" y="1.5em"><tspan class="bold fa4">project root: </tspan><tspan>/Users/cortesi/tenx/examples/concepts</tspan></text>
-<text x="0ch" y="2.5em"><tspan class="bold fa4">include strategy: </tspan><tspan>git, glob: scripts/*.py</tspan></text>
+<text x="0ch" y="2.5em"><tspan class="bold fa4">globs: </tspan><tspan>**/*.rs</tspan></text>
 </svg>
