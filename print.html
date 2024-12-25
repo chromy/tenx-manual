@@ -1,0 +1,1071 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Tenx Manual</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Tenx Manual</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="overview"><a class="header" href="#overview">Overview</a></h1>
+<p><strong>Tenx</strong> is a sharp command-line tool for AI-assisted coding.</p>
+<pre><code class="language-bash">cargo install tenx
+</code></pre>
+<h2 id="features"><a class="header" href="#features">Features</a></h2>
+<ul>
+<li>AI-assisted code editing and generation.</li>
+<li>Session-based workflow for organized development.</li>
+<li>Preflight checks to ensure the project is consistent before prompting.</li>
+<li>Post-patch checks with automated model feedback and retry on failure.</li>
+<li>Undo, retry and re-edit steps in the session.</li>
+<li>Model agnostic - swap models on the fly, mid-conversation.</li>
+<li>Built-in support for models from OpenAI, Anthropic, DeepInfra, DeepSeek, xAI,
+Google and Groq, and local models through tools like Ollama.</li>
+<li>Built on <strong>libtenx</strong>, a Rust library for building AI-assisted coding tools.</li>
+</ul>
+<h2 id="ethos"><a class="header" href="#ethos">Ethos</a></h2>
+<ul>
+<li>Built with an uncompromsing focus on expert developers.</li>
+<li>Rigorous benchmarks to track the performance of our system prompt and
+interaction protocol against all current models.</li>
+<li>Stay flexible and refuse to commit deeply to any one model or API.</li>
+<li>Supports all practically useful models.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="tenx"><a class="header" href="#tenx">tenx</a></h1>
+<p>All of Tenx's operations are exposed through the <strong>tenx</strong> command-line tool.
+The command is self-documenting, and the canonical refrence is the help output:</p>
+<img src="examples/tenx_help.svg"/>
+<p>You can ask for help on any subcommand by running <code>tenx &lt;subcommand&gt; --help</code>:</p>
+<img src="examples/tenx_code_help.svg"/>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="quick-start"><a class="header" href="#quick-start">Quick start</a></h1>
+<h2 id="step-1-configure-a-model"><a class="header" href="#step-1-configure-a-model">Step 1: Configure a model</a></h2>
+<p>Tenx automatically configures default models based on API keys in the
+environment. Refer to the <a href="config-models.html">model config docs</a> to see which
+models are configured for which key, and also how you can manually configure
+models if needed. For our example, let's assume we're using Claude Sonnet from
+Anthropic and set the corresponding environment variable:</p>
+<pre><code class="language-bash">export ANTHROPIC_API_KEY="my-api-key"
+</code></pre>
+<p>We can inspect the models that tenx has configured to make sure everything is
+correct:</p>
+<img src="examples/quickstart_models.svg"/>
+<h2 id="step-2-tenx-quick"><a class="header" href="#step-2-tenx-quick">Step 2: tenx quick</a></h2>
+<p>Now we have a model configured, let's write some code. Say we have a Rust
+project with the following in <code>./src/lib.rs</code>:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn fibonacci(n: u64) -&gt; Vec&lt;u64&gt; {
+    vec![]
+}
+
+#[cfg(test)]
+mod tests {} 
+<span class="boring">}</span></code></pre></pre>
+<p>First, we ask the model to implement the <code>fibonacci</code> function, using the
+<code>quick</code> command:</p>
+<p><img src="examples/quickstart_quick.gif" alt="caption" /></p>
+<p>The <code>quick</code> command is a shortcut which:</p>
+<ul>
+<li>Creates a new <a href="./session.html">session</a> (<code>tenx new</code>)</li>
+<li>Adds <code>./src/lib.rs</code> to the session (<code>tenx add src/lib.rs</code>)</li>
+<li>Issues a request to cut code (<code>tenx code</code>)</li>
+</ul>
+<p>The <code>tenx code</code> command is one of Tenx's workhorse commands - it asks Tenx to
+use the model to cut code within the current session. If the prompt isn't
+otherwise provided, <code>code</code> opens an editor to get the user's input.</p>
+<p>After that, the pre <a href="config-checks.html">checks</a> to ensure the project is in a
+consistent state. This is important because it's how we validate the results of
+the model's edits - if the edit results in a check failing, feedback is
+provided back to the model and Tenx iterates until the checks pass (or we hit
+our retry limit). Which checks run is based on the user's configuration, and
+the file extensions of the files in the session. You can run the checks
+manually like this:</p>
+<p><img src="examples/quickstart_check.gif" alt="caption" /></p>
+<p>In this case, our checks are <code>cargo check</code>, which does type and syntax
+checking, and <code>cargo test</code> which runs the unit test suite. After the
+pre-checks, we apply the model's changes to the code, and then run the
+configured post-checks. These usually overlap with the pre-checks, but may be
+different, depending on the configuration. In this case, our post-checks
+include <code>cargo fmt</code> which also re-formats the code in-place.</p>
+<h2 id="step-3-tenx-code"><a class="header" href="#step-3-tenx-code">Step 3: tenx code</a></h2>
+<p>After our intial edit, we want to continue the session to make a tweak. First,
+let's look at what the session currently contains:</p>
+<img src="examples/quickstart_session.svg"/>
+<p>We have one step in the session, with the changes we made above. Now, we will
+use the <code>tenx code</code> command directly to add a unit test. The entire session
+context will be passed back to the model, so we can just pick up where we left
+off in the conversation.</p>
+<p><img src="examples/quickstart_code.gif" alt="caption" /></p>
+<p>And voila! We have a completed function and its attending unit tests. Here's
+the final code:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>/// Returns a vector containing the first n Fibonacci numbers.
+pub fn fibonacci(n: u64) -&gt; Vec&lt;u64&gt; {
+    let mut sequence = Vec::with_capacity(n as usize);
+    if n == 0 {
+        return sequence;
+    }
+    sequence.push(0);
+    if n == 1 {
+        return sequence;
+    }
+    sequence.push(1);
+    for _ in 2..n {
+        let next = sequence[sequence.len() - 1] + sequence[sequence.len() - 2];
+        sequence.push(next);
+    }
+    sequence
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_fibonacci() {
+        assert_eq!(fibonacci(0), vec![]);
+        assert_eq!(fibonacci(1), vec![0]);
+        assert_eq!(fibonacci(2), vec![0, 1]);
+        assert_eq!(fibonacci(5), vec![0, 1, 1, 2, 3]);
+        assert_eq!(fibonacci(8), vec![0, 1, 1, 2, 3, 5, 8, 13]);
+    }
+} 
+<span class="boring">}</span></code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fixing-code-with-tenx-fix"><a class="header" href="#fixing-code-with-tenx-fix">Fixing code with tenx fix</a></h1>
+<p>Let's imagine we start with the following code:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>/// Returns a vector containing the first n numbers in the Fibonacci sequence.
+pub fn fibonacci(n: u64) -&gt; Vec&lt;u64&gt; {
+    vec![]
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_fibonacci() {
+        assert_eq!(fibonacci(0), vec![]);
+        assert_eq!(fibonacci(1), vec![0]);
+        assert_eq!(fibonacci(2), vec![0, 1]);
+        assert_eq!(fibonacci(5), vec![0, 1, 1, 2, 3]);
+        assert_eq!(fibonacci(8), vec![0, 1, 1, 2, 3, 5, 8, 13]);
+    }
+} 
+<span class="boring">}</span></code></pre></pre>
+<p>The <strong>fibonacci</strong> function is unimplemented so the tests will immediately fail, as we can verify
+with the <code>tenx check</code> command:</p>
+<p><img src="examples/fix_check.gif" alt="caption" /></p>
+<p>We can now ask the model to make our checks pass with <code>tenx fix</code>. This runs the
+checks on project, and sends any output from failing checks to the model. From
+there, the model uses the <strong>edit</strong> capability of our dialect to read the needed
+files to make changes. Here's what that looks like:</p>
+<p><img src="examples/fix_fix.gif" alt="caption" /></p>
+<p>Note we didn't specify which files to edit (though we could have chosen to -
+see <code>tenx help fix</code>). The output of the check here was sufficient for Sonnet to
+be able to first ask to view the file, and then to make the edit itself.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="context-rust"><a class="header" href="#context-rust">Context: Rust</a></h1>
+<p>Let's look at using Tenx with <a href="https://github.com/cortesi/ruskel">ruskel</a> to
+provide library context for Rust.</p>
+<h2 id="ruskel"><a class="header" href="#ruskel">Ruskel</a></h2>
+<p>Ruskel takes a Rust crate or module, and produces a skeleton of its public API,
+using syntactically correct Rust, all in one file. If the crate or module is
+not local, it will consult <a href="https://crates.io">crates.io</a> to download the
+source to produce the skeleton.</p>
+<p>As an example, here's the output of the <em>ruskel</em> command line tool for the very
+tiny <a href="https://crates.io/crates/termsize">termsize</a> library.</p>
+<img src="examples/ruskel.svg"/>
+<p>Note that the module structure is preserved with rust <strong>mod</strong> statements, and
+all structs, traits, functions in the public API are included along with their
+docs, but the implementation is elided.</p>
+<p>Now this is very useufl as a quick, complete command-line reference to a
+module, but it really shines when used to provide complete module context to a
+model. Tenx's Ruskel integration means you can easily and quickly provide full
+module documentation for <strong>any</strong> library on <a href="https://crates.io">crates.io</a>.</p>
+<p>Another handy trick is to add a Ruskel context for local crates to your config.
+Tenx itself does this to add <strong>libtenx</strong> by default, which means that we always
+have an up to date snapshot of our API while working.</p>
+<h2 id="ruskel-and-tenx"><a class="header" href="#ruskel-and-tenx">Ruskel and Tenx</a></h2>
+<p>Let's do something a bit more meaty.
+<a href="https://crates.io/crates/misanthropy">Misanthropy</a> is a complete set of
+bindings to the Anthropic API. It's a sister project of Tenx, as well as being
+developed entirely using Tenx. The Ruskel output for Misanthropy is too long
+to include here, but you can view it yourself with:</p>
+<pre><code class="language-bash">ruskel misanthropy
+</code></pre>
+<p>Our mission is to write a simple command line tool that uses Misanthropy to
+make a call to the Anthropic API. First, let's define our starting point -
+initially, we'll just have a simple placeholder command that prints "Hello
+word!", like this:</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    println!("Hello, world!");
+} </code></pre></pre>
+<p>Now, we create a new session, and add the Misanthropy Ruskel skeleton to it.</p>
+<p><img src="examples/ruskel_setup.gif" alt="caption" /></p>
+<p>Finally, we use the <strong>tenx code</strong> command to ask Tenx to write code within the
+current session. For good measure, we'll also use GPT4o for this, rather than
+the default Claude Sonnet.</p>
+<p><img src="examples/ruskel_code.gif" alt="caption" /></p>
+<p>And here's the result - the model has used the detailed API definition we
+provided it to create a perfectly valid interaction with Anthropic.</p>
+<pre><pre class="playground"><code class="language-rust">use misanthropy::{Anthropic, Content, Message, MessagesRequest, Role};
+use std::env;
+
+#[tokio::main]
+async fn main() {
+    // Read API key from the environment
+    let api_key = env::var("ANTHROPIC_API_KEY").expect("API key not found in environment");
+
+    // Create a new Anthropic client
+    let client = Anthropic::new(&amp;api_key);
+
+    // Create a new message request
+    let request = MessagesRequest {
+        model: misanthropy::DEFAULT_MODEL.to_string(),
+        max_tokens: 50,
+        messages: vec![Message {
+            role: Role::User,
+            content: vec![Content::Text(misanthropy::Text::new("How do you feel?"))],
+        }],
+        ..Default::default()
+    };
+
+    // Send the request to the API and await the response
+    match client.messages(&amp;request).await {
+        Ok(response) =&gt; {
+            for content in response.content {
+                if let Content::Text(text) = content {
+                    println!("{}", text.text);
+                }
+            }
+        }
+        Err(err) =&gt; eprintln!("Error: {:?}", err),
+    }
+} </code></pre></pre>
+<p>For good measure, here's the output of a run of the resulting program:</p>
+<blockquote>
+<p>As an AI language model, I don't have feelings in the same way that humans do. I don't experience emotions like happiness, sadness, or anger. My responses are generated based on the patterns and information I've learned from the vast amount</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="python-unit-tests"><a class="header" href="#python-unit-tests">Python Unit Tests</a></h1>
+<p>Unlike Rust, there's no consistent way to just run unit tests for a Python
+project. Not only are there multiple test frameworks, but there are also a
+morass of different ways to specify and manage dependencies. So while Tenx
+includes support for linting and formatting Python with
+<a href="https://github.com/astral-sh/ruff">ruff</a>, we "solve" the unit testing problem
+by simply not including test support directly.</p>
+<p>Luckily, configuring an <a href="./config-checks.html">arbitrary check is very simple</a>.
+Here's an example of using <a href="https://github.com/astral-sh/uv">uv</a> to run pytest
+on all Python files in a project directory:</p>
+<pre><code class="language-ron">(
+    checks: (
+        custom: [
+            (
+                name: "pytest",
+                command: "uv run pytest *.py",
+                globs: ["**/*.py"],
+            ),
+        ]
+    )
+)
+</code></pre>
+<p>We can now verify that the <strong>pytest</strong> check is included in our project checks:</p>
+<img src="examples/checks_checks.svg"/>
+<p>And we can run it on our project:</p>
+<p><img src="examples/checks_run.gif" alt="caption" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="checks"><a class="header" href="#checks">Checks</a></h1>
+<p>If Tenx has a unifying theory, it's this: models hallucinate, and the more
+thoroughly we can connect responses to a ground truth, the more useful our
+results will be. Add to this the fact that when a model diverges from this
+ground truth we can automatically ask the model to iterate towards it, and you
+have the core of Tenx's philosophy.</p>
+<p><strong>Checks</strong> are the mechanism by which we connect model responses to ground
+truth. While Tenx has a small number of built-in checks (which will rapidly
+grow in future versions), the checks mechanism is completely general and <a href="config-checks.html">any
+command can be configured to be a check</a>. All that is needed
+is for us to be able to detect failure, and for the check command to provide
+sufficient details in its output to steer the model.</p>
+<p>Checks can modify files, so they are also how we run automated formatters over
+the code produced by the model. Typically, checks are run <em>before</em> the model is
+invoked to make sure the code is in a consistent state, and then again <em>after</em>
+the model has produced output, to guide the model if it produces output that
+doesn't meet the checks. Some checks only make sense after the model has run,
+so checks can be configured to run <strong>pre</strong> or <strong>post</strong>  or <strong>both</strong>.</p>
+<p>Let's take a look at Tenx's built-in checks:</p>
+<img src="examples/tenx_checks.svg"/>
+<p>There are a few things to note here. Each check has a glob pattern that
+determines when it runs - a check only runs if its glob pattern matches a file
+that was <strong>edited</strong> during the session. Checks are ordered - so <strong>cargo check</strong>
+will perform type checking before <strong>cargo test</strong> runs unit tests. Lastly,
+checks can be disabled by default - <code>cargo clippy</code> is a bit too noisy to run by
+default, so the user has to enable it in their config or on the command line
+with the <code>--check</code> flag.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="context"><a class="header" href="#context">Context</a></h1>
+<p>Tenx allows the user to attach <strong>context</strong> to a session - that is, information
+that is provided to the model, but is not editable. Often, this is reference
+material - manuals or documentation - but it can also be examples of output the
+user wants, style guides, tweaks to the model's prompt, or anything else that
+the user needs the model to know.</p>
+<p>Tenx has a flexible - and growing - set of commands for including and managing
+context. All the contxt commands are grouped as subcommands under <code>tenx ctx</code>.</p>
+<img src="examples/tenx_ctx.svg"/>
+<p>One command to note here is <em>refresh</em>. Some context types, like <em>url</em> and
+<em>ruskel</em> take some time to fetch or generate. Usually, this is done once when
+the context is first added, but <strong>refresh</strong> lets you regenerate the data if
+there have been updates.</p>
+<p>The configuration file also has a <a href="./config-context.html">context section</a>, where
+you can define default context that is added to every session.</p>
+<h2 id="context-types"><a class="header" href="#context-types">Context Types</a></h2>
+<h3 id="cmd"><a class="header" href="#cmd">cmd</a></h3>
+<p>The <em>cmd</em> context type executes a shell command and uses its output as context. The command is run with <code>sh -c</code>, and both stdout and stderr are captured. This can be useful for including the output of tools like <code>git log</code>, compiler messages, or command-line tool output in your context.</p>
+<h3 id="file"><a class="header" href="#file">file</a></h3>
+<p>The <em>file</em> context type is similar to <em>text</em>, but it reads the text from a
+file, and the name of the file is associated with the context and visible to
+the model. The content of the file context is refreshed every time we contact
+the model, so you can edit the file and the model will see the changes.</p>
+<h3 id="project_map"><a class="header" href="#project_map">project_map</a></h3>
+<p>The <em>project map</em> is a special context that is auto-generated by Tenx itself.
+It's essentially just list of files included in the project, as seen in the
+<code>tenx files</code> command. Tenx allows a model to request to view or edit files in
+the project if needed, and the project map is how it knows what files are
+available.</p>
+<h3 id="ruskel-1"><a class="header" href="#ruskel-1">ruskel</a></h3>
+<p><a href="https://github.com/cortesi/ruskel">Ruskel</a> is a tool that extracts the public
+surface area of a Rust project - that is, the public functions, types, traits,
+and modules - and renders it to syntactically valid Rust code. This is useful
+for including the API of a Rust module in the context of a session. This can be
+either local or any crate on <a href="https://crates.io">crates.io</a>.</p>
+<p>See the <a href="./rust.html">Working in Rust</a> example for a demonstration of how to use
+<code>ruskel</code> in practice.</p>
+<h3 id="text"><a class="header" href="#text">text</a></h3>
+<p>The <em>text</em> context type is the simplest - it's just a string of text. <code>tenx ctx text</code> command can load context from a file, or you can provide the text
+directly through stdin.</p>
+<h3 id="url"><a class="header" href="#url">url</a></h3>
+<p>The <em>url</em> context type fetches the content of a URL and provides it to the model.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="globs"><a class="header" href="#globs">Globs</a></h1>
+<p>Many Tenx comamnds and configuration options take glob patterns as arguments.
+The syntax for these patterns are as follows<sup class="footnote-reference"><a href="#1">1</a></sup>:</p>
+<ul>
+<li><code>?</code> matches any single character.</li>
+<li><code>*</code> matches zero or more characters.</li>
+<li><code>**</code> recursively matches directories but are only legal in three situations.
+First, if the glob starts with <code>**/</code>, then it matches
+all directories. For example, <code>**/foo</code> matches <code>foo</code>
+and <code>bar/foo</code> but not <code>foo/bar</code>. Secondly, if the glob ends with
+<code>/**</code>, then it matches all sub-entries. For example,
+<code>foo/**</code> matches <code>foo/a</code> and <code>foo/a/b</code>, but not <code>foo</code>.
+Thirdly, if the glob contains <code>/**/</code> anywhere within
+the pattern, then it matches zero or more directories. Using <code>**</code> anywhere
+else is illegal (N.B. the glob <code>**</code> is allowed and means "match everything").</li>
+<li><code>{a,b}</code> matches <code>a</code> or <code>b</code> where <code>a</code> and <code>b</code> are arbitrary glob patterns.
+(N.B. Nesting <code>{...}</code> is not allowed.)</li>
+<li><code>[ab]</code> matches <code>a</code> or <code>b</code> where <code>a</code> and <code>b</code> are characters. Use
+<code>[!ab]</code> to match any character except for <code>a</code> and <code>b</code>.</li>
+<li>Metacharacters such as <code>*</code> and <code>?</code> can be escaped with character class
+notation. e.g., <code>[*]</code> matches <code>*</code>.</li>
+</ul>
+<p>In some places, negative globs are allowed. These are globs that start with
+<code>!</code>, and they exclude files that match the pattern. For example, <code>!**/*.rs</code>
+would exclude all Rust files from a set of files.</p>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>From docs for the <a href="https://docs.rs/globset/latest/globset/">globset</a> crate.</p>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-project"><a class="header" href="#the-project">The Project</a></h1>
+<p>The <strong>project</strong> defines which files are included and excluded for editing, and
+where the root of our directory tree is. Among other things, this is used to
+generate the project map we supply to the model, which lets the model ask to
+view or edit files if needed. See the <a href="./config-project.html">project section</a> of
+the config file for the full details.</p>
+<p>You can view the current project configuration with with the <code>tenx project</code>
+command:</p>
+<img src="examples/concepts_project.svg"/>
+<p>In this case, we include all files in git, as well as the files in
+<code>./scripts/*.py</code>.</p>
+<p>You can view the list of files included in the project - after include rules
+and exclude globs have been applied - using the <code>tenx files</code> command:</p>
+<img src="examples/tenx_files.svg"/>
+<p>Many Tenx commands take a glob pattern as an argument, where the patter is
+matched over the files in the project. So, for instance, we can add all Rust
+files in the project to an edit session like so:</p>
+<pre><code class="language-shell">tenx edit "**/*.rs"
+</code></pre>
+<p>Notice that we are quoting the glob pattern to prevent the shell from expanding it.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-session"><a class="header" href="#the-session">The Session</a></h1>
+<p>All model interactions happen within the context of a <strong>session</strong>. A session represents
+a single coherent conversation, which would typically result in one commit. A session
+consists of the following:</p>
+<ul>
+<li>The set of files we're currently editing. This is a subset of all the files
+included in the <a href="./project.html">project</a>.</li>
+<li>The non-editable <a href="./context.html">context</a> that we're providing to the model.</li>
+<li>A list of <strong>steps</strong>, each of which is a request to the model and a response,
+along with any associated information like the patch parsed from the model
+response.</li>
+<li>Information needed to undo any step.</li>
+</ul>
+<p>There are a few ways to create a session - explicitly with <code>tenx new</code>, which
+creates a new empty session, and implicitly with commands like <code>tenx quick</code> and
+<code>tenx fix</code>, both of which take a list of file globs, create a session with
+those files. Consult the help for each command for more information.</p>
+<p>You can also view the current session with the <code>tenx session</code> command:</p>
+<img src="examples/tenx_session.svg"/>
+<p>The example above introduces another crucial concept - contexts. Tenx has added
+a <strong>project map</strong> as context to the session. Read more about contexts in the
+<a href="./context.html">context section</a>.</p>
+<h2 id="working-with-sessions"><a class="header" href="#working-with-sessions">Working with sessions</a></h2>
+<p>The canonical reference for working with sessions is the help output of the
+<code>tenx</code> command-line tool. However, here are a few things to explore:</p>
+<ul>
+<li>Managing session context is a key part of tenx, and is covered in the
+<a href="./context.html">context section</a>.</li>
+<li><code>tenx edit</code>: Add editable files to the context.</li>
+<li><code>tenx retry</code>: Retry a model interaction, rolling back any changes already
+made. You can use retry to re-start the session at any step, and even switch
+models mid-session if your current model is not producing the results you
+need. You can also modify the prompt for a step with the <code>--edit</code> flag.</li>
+<li><code>tenx reset</code>: Reset a session to a specified step, rolling back all changes
+up to that step.</li>
+<li><code>tenx code</code>: Continue the current session, with a new user prompt. The model
+will receive the full context of the session up to date.</li>
+<li><code>tenx clear</code>: Clear all steps from a session, without resetting changes.
+Handy if you've set up <a href="./context.html">context</a> that you want to keep, but
+want to start a new conversation.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="configuration"><a class="header" href="#configuration">Configuration</a></h1>
+<p>Tenx uses RON (<a href="https://github.com/ron-rs/ron">Rusty Object Notation</a>) for its
+config files. Configuraton comes from three sources, in order of precedence:</p>
+<ul>
+<li><strong>Project</strong> configuration in <code>.tenx.ron</code></li>
+<li><strong>Global</strong> configuration at <code>~/.config/tenx/tenx.ron</code><sup class="footnote-reference"><a href="#xdg">1</a></sup></li>
+<li>Defaults created by tenx on startup</li>
+</ul>
+<p>The location of the project configuration file also determines the project root
+(unless over-ridden). The first thing you should do when setting up Tnex is to
+create a <code>.tenx.ron</code> file in the root of your project.</p>
+<pre><code class="language-bash">cd ./my/project
+touch .tenx.ron
+</code></pre>
+<p>You can view the full current configuration with:</p>
+<pre><code class="language-bash">tenx config
+</code></pre>
+<p>And you can view the configuration defaults with:</p>
+<pre><code class="language-bash">tenx config --defaults
+</code></pre>
+<p>These commands output the configuration in RON format, so this is also a good
+way to get an overview of the configuration format.</p>
+<h2 id="quick-example"><a class="header" href="#quick-example">Quick Example</a></h2>
+<p>Here's a minimal example from the Tenx project itself:</p>
+<pre><code class="language-ron">(
+    retry_limit: 18,
+    context: (
+        ruskel: ["libtenx"]
+    ),
+    checks: (
+        enable: ["cargo-clippy"]
+    )
+)
+</code></pre>
+<p>This bumps the retry limit, adds a <a href="https://github.com/cortesi/ruskel">ruskel</a>
+skeleton of libtenx (Tenx's own library) as context, and enables the
+cargo-clippy check, which is not enabled by default.</p>
+<div class="footnote-definition" id="xdg"><sup class="footnote-definition-label">1</sup>
+<p>This may actually be different based on your <a href="https://specifications.freedesktop.org/basedir-spec/latest/">XDG
+configuration</a>.</p>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="global-values"><a class="header" href="#global-values">Global Values</a></h1>
+<table>
+<thead>
+    <th>Field</th>
+    <th>Description</th>
+</thead>
+<tr>
+    <td><code>session_store_dir</code></td>
+    <td>
+        Directory for storing session data. By default, this is in
+        <code>~/.config/tenx</code>. Users will rarely have to change this.
+    </td>
+</tr>
+<tr>
+    <td><code>retry_limit</code></td>
+    <td>Number of retries</td>
+</tr>
+</table>
+<h1 id="example"><a class="header" href="#example">Example</a></h1>
+<pre><code class="language-ron">(
+    session_store_dir: "~/.local/share/tenx",
+    retry_limit: 5,
+)
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="checks-1"><a class="header" href="#checks-1">Checks</a></h1>
+<p>Controls pre and post checks for code modifications.</p>
+<table>
+<thead>
+    <th>Field</th>
+    <th>Description</th>
+</thead>
+<tr>
+    <td><code>custom</code></td>
+    <td>Custom check configurations. Entries with the same name as a builtin will override the builtin</td>
+</tr>
+<tr>
+    <td><code>builtin</code></td>
+    <td>Built-in check configurations</td>
+</tr>
+<tr>
+    <td><code>disable</code></td>
+    <td>List of checks to disable</td>
+</tr>
+<tr>
+    <td><code>enable</code></td>
+    <td>List of checks to enable</td>
+</tr>
+<tr>
+    <td><code>no_pre</code></td>
+    <td>Skip all pre-checks</td>
+</tr>
+<tr>
+    <td><code>only</code></td>
+    <td>Optional single check name to run</td>
+</tr>
+</table>
+<p>Check configurations have the following fields:</p>
+<table>
+<thead>
+    <th>Field</th>
+    <th>Description</th>
+</thead>
+<tr>
+    <td><code>name</code></td>
+    <td>Name of the check for display and error reporting</td>
+</tr>
+<tr>
+    <td><code>command</code></td>
+    <td>Shell command to execute, run with sh -c</td>
+</tr>
+<tr>
+    <td><code>globs</code></td>
+    <td>List of glob patterns to match against files for determining relevance</td>
+</tr>
+<tr>
+    <td><code>default_off</code></td>
+    <td>Whether this check defaults to off in the configuration</td>
+</tr>
+<tr>
+    <td><code>fail_on_stderr</code></td>
+    <td>Whether to treat any stderr output as a failure, regardless of exit code</td>
+</tr>
+<tr>
+    <td><code>mode</code></td>
+    <td>When this check should run - one of <code>pre</code>, <code>post</code>, or <code>both</code></td>
+</tr>
+</table>
+<h1 id="example-1"><a class="header" href="#example-1">Example</a></h1>
+<p>Example of configuring a custom check.</p>
+<pre><code class="language-ron">(
+    checks: (
+        custom: [
+            (
+                name: "mypy",
+                command: "mypy --strict",
+                globs: ["*.py"],
+                default_off: false,
+                fail_on_stderr: true,
+                mode: both,
+            ),
+        ],
+        enable: ["cargo-clippy"],
+    ),
+)
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="context-1"><a class="header" href="#context-1">Context</a></h1>
+<p>Controls what context is included in model interactions by default.</p>
+<table>
+<thead>
+    <th>Field</th>
+    <th>Description</th>
+</thead>
+<tr>
+    <td><code>ruskel</code></td>
+    <td>List of Rust module outlines to include</td>
+</tr>
+<tr>
+    <td><code>path</code></td>
+    <td>List of project files to include</td>
+</tr>
+<tr>
+    <td><code>project_map</code></td>
+    <td>Whether to include a project file map</td>
+</tr>
+<tr>
+    <td><code>text</code></td>
+    <td>List of named text blocks to include</td>
+</tr>
+<tr>
+    <td><code>url</code></td>
+    <td>List of URLs to include</td>
+</tr>
+</table>
+<p>Text blocks have the following fields:</p>
+<table>
+<thead>
+    <th>Field</th>
+    <th>Description</th>
+</thead>
+<tr>
+    <td><code>name</code></td>
+    <td>Name of the text block</td>
+</tr>
+<tr>
+    <td><code>content</code></td>
+    <td>Content of the text block</td>
+</tr>
+</table>
+<h1 id="example-2"><a class="header" href="#example-2">Example</a></h1>
+<pre><code class="language-ron">(
+    context: (
+        ruskel: ["src/lib.rs", "src/main.rs"],
+        path: ["Cargo.toml", "README.md"],
+        project_map: true,
+        text: [
+            (
+                name: "style_guide",
+                content: "- Use 4 spaces for indentation\n- Max line length 80 chars",
+            ),
+        ],
+        url: ["https://example.com/api-docs"],
+    ),
+)
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="dialect"><a class="header" href="#dialect">Dialect</a></h1>
+<p>Settings related to the dialect we are using to communicate to models. For the
+moment, we have only one dialect, so this section is pretty simple.</p>
+<table>
+<thead>
+    <th>Field</th>
+    <th>Description</th>
+</thead>
+<tr>
+    <td><code>edit</code></td>
+    <td>Allow the model to request to edit files in the project map</td>
+</tr>
+</table>
+<h1 id="example-3"><a class="header" href="#example-3">Example</a></h1>
+<pre><code class="language-ron">(
+    dialect: (
+        edit: true,
+    ),
+)
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="models"><a class="header" href="#models">Models</a></h1>
+<p>This section controls model selection and behavior.</p>
+<table>
+<thead>
+    <th>Field</th>
+    <th>Description</th>
+</thead>
+<tr>
+    <td><code>builtin</code></td>
+    <td>Built-in model configurations</td>
+</tr>
+<tr>
+    <td><code>custom</code></td>
+    <td>Custom model configurations. Entries with the same name as a builtin will override the builtin</td>
+</tr>
+<tr>
+    <td><code>default</code></td>
+    <td>The default model name</td>
+</tr>
+<tr>
+    <td><code>no_stream</code></td>
+    <td>Disable streaming for all models</td>
+</tr>
+</table>
+<h1 id="builtin-models"><a class="header" href="#builtin-models">Builtin models</a></h1>
+<p>Tenx auto-configures builtin models based on the presence of API keys in
+environment variables:</p>
+<table>
+<thead>
+    <th>Environment Variable</th>
+    <th>Models Added</th>
+</thead>
+<tr>
+    <td><code>ANTHROPIC_API_KEY</code></td>
+    <td>
+        <code>sonnet</code> (claude-3-5-sonnet-latest)<br>
+        <code>haiku</code> (claude-3-5-haiku-latest)
+    </td>
+</tr>
+<tr>
+    <td><code>DEEPSEEK_API_KEY</code></td>
+    <td>
+        <code>deepseek</code> (deepseek-chat)
+    </td>
+</tr>
+<tr>
+    <td><code>DEEPINFRA_API_KEY</code></td>
+    <td>
+        <code>qwen</code> (Qwen/Qwen2.5-Coder-32B-Instruct)<br>
+        <code>llama-8b-turbo</code> (meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo)<br>
+        <code>llama-70b</code> (meta-llama/Meta-Llama-3.1-70B-Instruct)<br>
+        <code>llama33-70b</code> (meta-llama/Llama-3.3-70B-Instruct)<br>
+        <code>qwq</code> (Qwen/QwQ-32B-Preview)
+    </td>
+</tr>
+<tr>
+    <td><code>GOOGLEAI_API_KEY</code></td>
+    <td>
+        <code>gemini-exp</code> (gemini-exp-1206)<br>
+        <code>gemini-flash-exp</code> (gemini-2.0-flash-exp)<br>
+        <code>gemini-flash-thinking-exp</code> (gemini-2.0-flash-thinking-exp-1219)<br>
+        <code>gemini-15pro</code> (gemini-1.5-pro)<br>
+        <code>gemini-15flash</code> (gemini-1.5-flash)<br>
+        <code>gemini-15flash8b</code> (gemini-1.5-flash-8b)
+    </td>
+</tr>
+<tr>
+    <td><code>GROQ_API_KEY</code></td>
+    <td>
+        <code>groq-llama33-70b</code> (llama-3.3-70b-versatile)<br>
+        <code>groq-llama31-8b</code> (llama-3.1-8b-instant)
+    </td>
+</tr>
+<tr>
+    <td><code>OPENAI_API_KEY</code></td>
+    <td>
+        <code>o1</code> (o1-preview)<br>
+        <code>o1-mini</code> (o1-mini)<br>
+        <code>gpt4o</code> (gpt-4o)<br>
+        <code>gpt4o-mini</code> (gpt-4o-mini)
+    </td>
+</tr>
+<tr>
+    <td><code>XAI_API_KEY</code></td>
+    <td>
+        <code>grok</code> (grok-beta)
+    </td>
+</tr>
+</table>
+<h1 id="custom-models"><a class="header" href="#custom-models">Custom models</a></h1>
+<p>Models configurations come in two varieties - <strong>claude</strong>, which is specific to
+the Anthropic API, and <strong>openai</strong>, which can be used for any model compatible
+with the OpenAI API.</p>
+<p>The possible fields for <strong>claude</strong> models are:</p>
+<table>
+<thead>
+    <th>Field</th>
+    <th>Description</th>
+</thead>
+<tr>
+    <td><code>name</code></td>
+    <td>The name used to refer to this model</td>
+</tr>
+<tr>
+    <td><code>api_model</code></td>
+    <td>The API model identifier</td>
+</tr>
+<tr>
+    <td><code>key</code></td>
+    <td>The API key</td>
+</tr>
+<tr>
+    <td><code>key_env</code></td>
+    <td>Environment variable to load the API key from if key is empty</td>
+</tr>
+</table>
+<p>The possible fields for <strong>openai</strong> models are:</p>
+<table>
+<thead>
+    <th>Field</th>
+    <th>Description</th>
+</thead>
+<tr>
+    <td><code>name</code></td>
+    <td>The name of the model</td>
+</tr>
+<tr>
+    <td><code>api_model</code></td>
+    <td>The API model identifier</td>
+</tr>
+<tr>
+    <td><code>key</code></td>
+    <td>The API key</td>
+</tr>
+<tr>
+    <td><code>key_env</code></td>
+    <td>The environment variable to load the API key from</td>
+</tr>
+<tr>
+    <td><code>api_base</code></td>
+    <td>The base URL for the API</td>
+</tr>
+<tr>
+    <td><code>can_stream</code></td>
+    <td>Whether the model can stream responses</td>
+</tr>
+<tr>
+    <td><code>no_system_prompt</code></td>
+    <td>Whether the model supports a separate system prompt</td>
+</tr>
+</table>
+<h1 id="example-4"><a class="header" href="#example-4">Example</a></h1>
+<p>Example of configuring a custom model using Ollama:</p>
+<pre><code class="language-ron">(
+    models: (
+        custom: [
+            open_ai(
+                name: "codellama",
+                api_model: "codellama",
+                key: "",  // Ollama doesn't need an API key
+                key_env: "",
+                api_base: "http://localhost:11434/v1",
+                can_stream: true,
+                no_system_prompt: false,
+            ),
+        ],
+        default: "codellama",
+    ),
+)
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="project"><a class="header" href="#project">Project</a></h1>
+<p>Configures the project - that is, the location of our file tree, and which
+files are included for editing.</p>
+<table>
+<thead>
+    <th>Field</th>
+    <th>Description</th>
+</thead>
+<tr>
+    <td><code>include</code></td>
+    <td>List of inclusion and exclusion glob patterns. Exclusion paterns start
+    with a <b>!</b>. By default, all files in the root are included, unless
+    excluded in a .gitignore, .ignore or git exclude file.</td>
+</tr>
+<tr>
+    <td><code>root</code></td>
+    <td>Project root directory</td>
+</tr>
+</table>
+<h1 id="example-5"><a class="header" href="#example-5">Example</a></h1>
+<pre><code class="language-ron">(
+    project: (
+        include: [
+            "!target/**",
+            "**/*.rs",
+        ],
+        root: "./",
+    )
+)
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="tags"><a class="header" href="#tags">Tags</a></h1>
+<p>Controls the <strong>tags</strong> dialect. This is a <em>DEVELOPER ONLY</em> section for now, and
+allows you to enable functionality that is currently broken.</p>
+<table>
+<thead>
+    <th>Field</th>
+    <th>Description</th>
+</thead>
+<tr>
+    <td><code>smart</code></td>
+    <td>Enable smart tag handling (experimental)</td>
+</tr>
+<tr>
+    <td><code>replace</code></td>
+    <td>Enable replacement tags</td>
+</tr>
+<tr>
+    <td><code>udiff</code></td>
+    <td>Enable unified diff format (experimental)</td>
+</tr>
+</table>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>

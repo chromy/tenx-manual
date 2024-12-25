@@ -1,0 +1,47 @@
+<svg width="80ch" height="24em" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+    <style>
+        * {
+            font-family: Courier, monospace;
+            font-size: 20px;
+        }
+        tspan, text {
+            font-variant-ligatures: none;
+            dominant-baseline: central;
+            white-space: pre;
+            fill: #c5c8c6;
+        }
+        .bg {
+            stroke-width: "0.5px";
+        }
+        .bold {
+            font-weight: bold;
+        }
+        <!-- Foreground ANSI colors -->
+        .fa2 { fill: #b5bd68; }
+        .fa4 { fill: #81a2be; }
+        .fa6 { fill: #8abeb7; }
+    </style>
+    <rect width="100%" height="100%" x="0" y="0" style="fill: #1d1f21"/>
+<text x="0ch" y="0.5em"><tspan class="fa2">$ </tspan><tspan>tenx session</tspan></text>
+<text x="0ch" y="1.5em"><tspan class="bold fa4">session:</tspan></text>
+<text x="0ch" y="2.5em"><tspan>  </tspan><tspan class="bold fa4">root: </tspan><tspan>/Users/cortesi/tenx/examples/quickstart</tspan></text>
+<text x="0ch" y="3.5em"><tspan>  </tspan><tspan class="bold fa4">context:</tspan></text>
+<text x="0ch" y="4.5em"><tspan>    - project_map</tspan></text>
+<text x="0ch" y="5.5em"><tspan>  </tspan><tspan class="bold fa4">edit:</tspan></text>
+<text x="0ch" y="6.5em"><tspan>    - src/lib.rs</tspan></text>
+<text x="0ch" y="8.5em"><tspan>  ======================================================================================================================</tspan></text>
+<text x="0ch" y="9.5em"><tspan>  </tspan><tspan class="bold fa6">Step 0</tspan></text>
+<text x="0ch" y="10.5em"><tspan>  ======================================================================================================================</tspan></text>
+<text x="0ch" y="11.5em"><tspan>      </tspan><tspan class="bold fa4">prompt:</tspan></text>
+<text x="0ch" y="12.5em"><tspan>        Implement the fibonacci function. Don&#39;t add tests for now.</tspan></text>
+<text x="0ch" y="13.5em"><tspan>      </tspan><tspan class="bold fa4">model comment:</tspan></text>
+<text x="0ch" y="14.5em"><tspan>        Ok.</tspan></text>
+<text x="0ch" y="15.5em"><tspan>      </tspan><tspan class="bold fa4">modified:</tspan></text>
+<text x="0ch" y="16.5em"><tspan>        - </tspan><tspan class="bold fa2">src/lib.rs</tspan></text>
+<text x="0ch" y="17.5em"><tspan>          write (1)</tspan></text>
+<text x="0ch" y="18.5em"><tspan>      </tspan><tspan class="bold fa4">usage:</tspan></text>
+<text x="0ch" y="19.5em"><tspan>        </tspan><tspan class="bold fa4">cache_creation_input_tokens</tspan><tspan>: 0</tspan></text>
+<text x="0ch" y="20.5em"><tspan>        </tspan><tspan class="bold fa4">cache_read_input_tokens</tspan><tspan>: 1888</tspan></text>
+<text x="0ch" y="21.5em"><tspan>        </tspan><tspan class="bold fa4">input_tokens</tspan><tspan>: 159</tspan></text>
+<text x="0ch" y="22.5em"><tspan>        </tspan><tspan class="bold fa4">output_tokens</tspan><tspan>: 193</tspan></text>
+</svg>

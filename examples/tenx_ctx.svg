@@ -1,0 +1,35 @@
+<svg width="80ch" height="18em" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+    <style>
+        * {
+            font-family: Courier, monospace;
+            font-size: 20px;
+        }
+        tspan, text {
+            font-variant-ligatures: none;
+            dominant-baseline: central;
+            white-space: pre;
+            fill: #c5c8c6;
+        }
+        .bg {
+            stroke-width: "0.5px";
+        }
+        <!-- Foreground ANSI colors -->
+        .fa2 { fill: #b5bd68; }
+    </style>
+    <rect width="100%" height="100%" x="0" y="0" style="fill: #1d1f21"/>
+<text x="0ch" y="0.5em"><tspan class="fa2">$ </tspan><tspan>tenx ctx --help</tspan></text>
+<text x="0ch" y="1.5em"><tspan>Context commands (alias: ctx)</tspan></text>
+<text x="0ch" y="3.5em"><tspan>Usage: tenx context &lt;COMMAND&gt;</tspan></text>
+<text x="0ch" y="5.5em"><tspan>Commands:</tspan></text>
+<text x="0ch" y="6.5em"><tspan>  clear    Clear all context from the session</tspan></text>
+<text x="0ch" y="7.5em"><tspan>  ruskel   Add ruskel documentation to context</tspan></text>
+<text x="0ch" y="8.5em"><tspan>  refresh  Refresh all contexts in the current session</tspan></text>
+<text x="0ch" y="9.5em"><tspan>  file     Add files to context</tspan></text>
+<text x="0ch" y="10.5em"><tspan>  url      Add URLs to context</tspan></text>
+<text x="0ch" y="11.5em"><tspan>  text     Add text to context</tspan></text>
+<text x="0ch" y="12.5em"><tspan>  cmd      Add command output to context</tspan></text>
+<text x="0ch" y="13.5em"><tspan>  show     Show the current session&#39;s contexts</tspan></text>
+<text x="0ch" y="14.5em"><tspan>  help     Print this message or the help of the given subcommand(s)</tspan></text>
+<text x="0ch" y="16.5em"><tspan>Options:</tspan></text>
+<text x="0ch" y="17.5em"><tspan>  -h, --help  Print help</tspan></text>
+</svg>

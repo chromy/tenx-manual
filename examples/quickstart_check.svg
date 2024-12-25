@@ -1,0 +1,21 @@
+<svg width="80ch" height="1em" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+    <style>
+        * {
+            font-family: Courier, monospace;
+            font-size: 20px;
+        }
+        tspan, text {
+            font-variant-ligatures: none;
+            dominant-baseline: central;
+            white-space: pre;
+            fill: #c5c8c6;
+        }
+        .bg {
+            stroke-width: "0.5px";
+        }
+        <!-- Foreground ANSI colors -->
+        .fa2 { fill: #b5bd68; }
+    </style>
+    <rect width="100%" height="100%" x="0" y="0" style="fill: #1d1f21"/>
+<text x="0ch" y="0.5em"><tspan class="fa2">$ </tspan><tspan>tenx check</tspan></text>
+</svg>
