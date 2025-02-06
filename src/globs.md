@@ -1,6 +1,6 @@
 # Globs
 
-Many Tenx comamnds and configuration options take glob patterns as arguments.
+Many Tenx commands and configuration options take glob patterns as arguments.
 The syntax for these patterns are as follows[^1]:
 
 * `?` matches any single character. 

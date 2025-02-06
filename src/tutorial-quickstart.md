@@ -62,7 +62,7 @@ include `cargo fmt` which also re-formats the code in-place.
 
 ## Step 3: tenx code
 
-After our intial edit, we want to continue the session to make a tweak. First,
+After our initial edit, we want to continue the session to make a tweak. First,
 let's look at what the session currently contains:
 
 <img src="examples/quickstart_session.svg"/>

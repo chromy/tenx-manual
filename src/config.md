@@ -1,7 +1,7 @@
 # Configuration
 
 Tenx uses RON ([Rusty Object Notation](https://github.com/ron-rs/ron)) for its
-config files. Configuraton comes from three sources, in order of precedence:
+config files. Configuration comes from three sources, in order of precedence:
 
 - **Project** configuration in `.tenx.ron`
 - **Global** configuration at `~/.config/tenx/tenx.ron`[^xdg]

@@ -2,7 +2,7 @@
 # tenx
 
 All of Tenx's operations are exposed through the **tenx** command-line tool.
-The command is self-documenting, and the canonical refrence is the help output:
+The command is self-documenting, and the canonical reference is the help output:
 
 <img src="examples/tenx_help.svg"/>
 

@@ -19,7 +19,7 @@ Note that the module structure is preserved with rust **mod** statements, and
 all structs, traits, functions in the public API are included along with their
 docs, but the implementation is elided.
 
-Now this is very useufl as a quick, complete command-line reference to a
+Now this is very useful as a quick, complete command-line reference to a
 module, but it really shines when used to provide complete module context to a
 model. Tenx's Ruskel integration means you can easily and quickly provide full
 module documentation for **any** library on [crates.io](https://crates.io).
